@@ -1,0 +1,33 @@
+<import src="/pages/templates/templates.wxml"/>
+<view wx:if="{{isLoad}}">
+  <template is="load" />
+</view>
+<view wx:else class="container">
+<view class='banner'>
+  <view class='site disflex'>
+    <image src="http://img.pccoo.cn/xcx/images/site-logo.png" alt="banner" class="logo"></image>
+    {{siteName}}旗下小程序
+  </view>
+  <image src="{{releaseBanner?releaseBanner:'../../images/fabu2.jpg'}}" alt="banner" class="fabu-banner"></image>
+</view>
+
+<block  wx:for="{{links}}" wx:key="links">
+  <view bindtap="linkFabu" data-tit="{{item.tit}}" data-id="{{item.id}}" class='fabu-tab disflex'>
+    <view class="fabu-icon">
+      <image class='fabu-img' mode='aspectFit' src="{{item.iconPic}}"></image>
+    </view>
+    <view class="flexn item-cont">
+      <text class="fabu-tit ellipsis">{{item.tit}}</text>
+      <view class="fabu-info ellipsis">{{item.info}}</view>
+    </view>
+    <icon class="xicon-youshanjiao"></icon>
+  </view>
+</block>
+</view>
+<view class="foot-hold"></view>
+<view hidden="{{!isEnd}}" class='dialog2'>
+  <view class='dialog-cont'>
+    <view class='dialog-tit'>小程序授权已到期</view>
+  </view>
+</view>
+<template is="footer" data="{{navIndex,footer,is_login}}" />

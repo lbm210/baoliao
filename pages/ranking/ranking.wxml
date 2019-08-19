@@ -1,0 +1,47 @@
+<!--pages/rank/rank.wxml-->
+<import src="/pages/templates/templates" />
+<view wx:if="{{isLoad}}">
+  <template is="load" />
+</view>
+<view class='container'>
+  <view class='nav-box' wx:if="{{rankList.gandong&&rankList.guanzhu}}">
+    <view class='nav disflex'>
+      <view class='nav-item flexn {{page.type==0?"on":""}}' data-id="0" bindtap='changeRank'>关注榜</view>
+    <view class='nav-item flexn {{page.type==1?"on":""}}' data-id="1" bindtap="changeRank">感动榜</view>
+    </view>
+  </view>
+  <block wx:for="{{infoList}}" wx:key="item">
+    <navigator url='../baoliaoDetail/baoliaoDetail?id={{item.id}}' class='item'>
+      <view class='rank-num {{index==0?"red":""}} {{index==1?"yellow":""}} {{index==2?"blue":""}}'>
+        {{index+1<10? '0'+(index+1):index+1}}
+      </view>
+      <view class='tit ellipsis2'>{{item.tit}}</view>
+      <view class='txt ellipsis3'>{{item.txt}}</view>
+      <view class='media-box disflex' wx:if="{{item.imgNum>0}}">
+        <view class="video-box" wx:if="{{item.video}}" wx:for="{{item.video}}" wx:for-item="videoItem" wx:key="videoItem">
+          <image class='video' mode='aspectFill' src='{{videoItem.VideoPic}}'></image>
+          <view class='mask'></view>
+        </view>
+        <view wx:for="{{item.img}}" wx:for-index="imgIndex" wx:key="itemImg" wx:if="{{((!item.video && imgIndex < 3) || ((item.video.length + imgIndex) < 3)) && item.imgNum}}" class='img-box' wx:for-item="imgItem">
+          <image class='img' mode='aspectFill' src='{{imgItem}}'></image>
+        </view>
+      </view>
+      <view class='bot disflex'>
+        <view class='user disflex'>
+          <image class='user-tx' src="{{item.userTx?item.userTx:'../../images/user-tx-d.png'}}" mode="aspectFill"></image>
+          <text class='user-name'>{{item.nick}}</text>
+        </view>
+        <view class='disflex hot {{item.hot >= 50 && item.hot < 400?"green":""}} {{item.hot >= 400 && item.hot < 1000?"yellow":""}} {{item.hot >= 1000?"red":""}}'>
+          <text class='iconfont icon-hot'></text>{{item.hot}}热度
+        </view>
+      </view>
+    </navigator>
+  </block>
+
+  <template is="holdBot" data="{{...holdBot}}"></template>
+ 
+</view>
+<!-- 无数据 -->
+<template hidden="{{!nodata}}" is="nodata" data="{{nodata}}"></template>
+<view class="foot-hold"></view>
+<template is="footer" data="{{navIndex,footer,is_login}}"></template>

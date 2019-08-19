@@ -1,0 +1,38 @@
+/* pages/my/my.wxss */
+.top{width:100%;height: 268rpx;background:url(http://img.pccoo.cn/xcx/images/my-ban.png) no-repeat;background-size:100% 100%;position:relative;padding:30rpx 30rpx 0;box-sizing: border-box;margin-bottom:40rpx}
+.tx{width:128rpx;height:128rpx;box-sizing: border-box;border:4rpx solid #fff;border-radius:50%;margin-right:20rpx;flex-shrink: 0}
+.open-login{line-height:80rpx;font-size:40rpx;color:#fff;font-weight:900}
+.name{height:80rpx;line-height:80rpx;font-size:40rpx;color:#fff;font-weight:900}
+.data{font-size:24rpx;color:#fff;line-height: 36rpx}
+.money{position:absolute;left:30rpx;bottom:-24rpx;width:690rpx;height:90rpx;background:#fff;border-radius:8rpx;line-height:90rpx;align-items: center;box-shadow: 0 4rpx 20rpx -6rpx rgba(0, 0, 0, .2);box-sizing:border-box;padding:0 40rpx;font-size:28rpx;color:#333}
+.money .txt{height:90rpx;line-height:90rpx;padding-right:30rpx;margin-right:30rpx;align-items: center;position: relative}
+.money .txt:after{content: "";position:absolute;right:1rpx;top:30rpx;width:1rpx;height:30rpx;background:#999}
+.money .txt .gantanhao{width:28rpx;height:28rpx;border-radius:50%;border:1rpx solid #999;font-size:20rpx;color:#999;text-align:center;line-height:28rpx;margin-left:30rpx;box-sizing:border-box;position:relative}
+.money .txt .tips{position: absolute;top:46rpx;left:-50rpx;width:420rpx;height:62rpx;line-height:62rpx;text-align:center;border-radius:32rpx;background:#30c080;font-size:22rpx;color:#fff}
+.money .txt .tips:after{content:"";position:absolute;left:45rpx;top:-30rpx;border-left:14rpx solid transparent;border-right:14rpx solid transparent;border-top:16rpx solid transparent;border-bottom:16rpx solid #30c080;}
+.money .money-num{font-size:32rpx}
+.money .money-num .spot{position:absolute;right:-10rpx;top:-10rpx;content:"";width:20rpx;height:20rpx;background:#f33;border-radius:50%}
+.money .f66{font-size:28rpx;color:#666}
+.tixian{width:140rpx;text-align:center;line-height:48rpx;font-size:24rpx;color:#30c080;border:2rpx solid #30c080;border-radius:24rpx}
+.content{width: 100%;box-sizing: border-box;padding: 0 40rpx}
+.cont-item,.cont-item-share{width:100%;height:110rpx;line-height:110rpx}
+.cont-item-share{position:relative}
+.cont-item-share .share{position:absolute;width:100%;height:100%;opacity: 0;z-index:1000}
+.content .iconfont{font-size:40rpx;color:#30c080;margin-right:20rpx}
+.item-right{box-sizing: border-box;border-bottom:1rpx solid #e2e2e2;font-size:28rpx;color:#333;overflow: hidden}
+.item-right .item-data{font-size:24rpx;color:#999;text-align:right;box-sizing: border-box;padding-right:30rpx;position:relative}
+.item-right .item-data:after{content:"";position:absolute;right:-10rpx;top:45rpx;border:10rpx solid transparent;border-left:10rpx solid #999;height:0;width:0}
+.logout{width:100%;height:100rpx;line-height:100rpx;text-align:center;font-size:28rpx;color:#999}
+.item-right .item-data>view{position:relative}
+.item-right .item-data .spot{position:absolute;right:22rpx;top:34rpx;width:20rpx;height:20rpx;background:#f33;border-radius:50%}
+.item-right .item-data .msg-num{z-index:100;position:absolute;right:30rpx;top:0;width:100%;height:100%}
+.cont-item:last-of-type{border-bottom:1rpx dolid #e2e2e2}
+.app-dia{width:500rpx;border-radius:20rpx;overflow: hidden}
+.app-dia .app-top{width:500rpx;height:180rpx;background:url(http://img.pccoo.cn/xcx/images/app-dia.jpg) no-repeat;background-size:100%;padding-top:48rpx;box-sizing:border-box}
+.app-dia .p1{font-size:32rpx;color:#fff;font-weight:900;line-height:34rpx;margin-bottom:20rpx;text-align:center}
+.app-dia .cont{background:#fff;border-radius:0 0 16rpx 16rpx;padding:50rpx 0 30rpx}
+.app-dia .app-cont{display:block;width:440rpx;height:140rpx;margin:0 auto 60rpx}
+.app-dia .down-tip{margin:0 30rpx;height:68rox;line-height:68rpx;background:#f6f6f6;border-radius:34rpx;justify-content: center;align-items: center;font-size:24rpx;color:#333}
+.app-dia .down-tip text{color:#ff3235}
+.app-dia .down-tip .logo{width:44rpx;height:44rpx;margin-right:18rpx}
+.close-app{margin:40rpx auto 0;width:54rpx;height:54rpx;line-height:54rpx;text-align:center;border-radius:50%;border:4rpx solid #fff;font-size:36rpx;color:#fff;font-weight:700}

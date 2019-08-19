@@ -1,0 +1,28 @@
+/* pages/rank/rank.wxss */
+.container{background:#30c080;width:100%;padding:30rpx 30rpx 0;box-sizing:border-box}
+.nav-box{padding-bottom:60rpx}
+.nav{width:100%;height:80rpx;border:1rpx solid #84d7b2;box-sizing:border-box;padding:0 2rpx;border-radius: 40rpx;align-items:center}
+.nav-item{height: 72rpx;text-align:center;line-height:72rpx;border-radius:38rpx;font-size:32rpx;color:#fff;font-weight:900}
+.nav-item.on{background:#fff;color:#30c080}
+.item{width:100%;padding:35rpx 30rpx 24rpx;box-sizing:border-box;background:#fff;border-radius:10rpx;position:relative;margin-bottom:50rpx}
+.item:last-of-type{margin-bottom:0}
+.rank-num{position:absolute;top:-24rpx;left:30rpx;width:68rpx;height:48rpx;border-radius:10rpx;background:linear-gradient(to right,#30c09c, #78d1bd);text-align:center;font-size:30rpx;color:#fff;font-weight:900;line-height:48rpx}
+.rank-num.red{background:linear-gradient(to right,#f33, #ff8257)}
+.rank-num.yellow{background:linear-gradient(to right,#ff8e29, #ffbf6c)}
+.rank-num.blue{background:linear-gradient(to right,#41ace3, #94d3f4)}
+.tit{font-size:32rpx;color:#333;line-height: 45rpx;margin-bottom:12rpx;font-weight: 900}
+.txt{font-size:28rpx;color:#666;line-height: 34rpx;margin-bottom:20rpx}
+.media-box{flex-wrap: wrap;margin-bottom:24rpx}
+.media-box .video-box{position: relative;border-radius:8rpx;overflow: hidden}
+.media-box>view{width:200rpx;height:200rpx;margin-right:15rpx}
+.media-box>view:nth-child(3n+3){margin-right:0}
+.media-box image{width:200rpx;height:200rpx;border-radius:8rpx;}
+.video-box .mask{position: absolute;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.3) url(http://img.pccoo.cn/wx/images/video-play.png) no-repeat center center;background-size:70rpx 70rpx}
+.bot{height:60rpx;justify-content: space-between;line-height: 60rpx;font-size:24rpx;color:#999}
+.user-tx{width:60rpx;height:60rpx;border-radius:50%;margin-right:18rpx}
+.hot{color:#999;align-items: center}
+.hot.green{color:#3bd881}
+.hot.yellow{color:#f6a838}
+.hot.red{color:#f6383c}
+.hold-bottom{border-top:none;color:#fff}
+.hold-bottom .loading{background:url(http://img.pccoo.cn/xcx/images/ajax-load.gif) no-repeat;background-size:cover}

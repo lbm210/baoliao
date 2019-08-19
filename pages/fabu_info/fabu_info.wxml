@@ -1,0 +1,106 @@
+<import src="/pages/templates/templates.wxml"/>
+<view wx:if="{{isLoad}}">
+  <template is="load" />
+</view>
+<view class='banner'>
+  <view class='site disflex'>
+    <image src="http://img.pccoo.cn/xcx/images/site-logo.png" alt="banner" class="logo"></image>
+    {{siteName}}旗下小程序
+  </view>
+  <image src="../../images/fabu2.jpg" alt="banner" class="fabu-banner"></image>
+</view>
+<!-- 发布内容 -->
+<view class='info-box'>
+  <view class='info-tit'>
+    您好，<text>{{userInfo.nickName}}</text>请完善填写爆料信息
+  </view>
+  <view class='info'>
+    <input class='ipt-tit' value='{{fabuData.tit}}' data-type="tit" bindblur="iptBlur" type='text' maxlength='50' placeholder="请输入爆料标题（5-50字）" placeholder-class='pt-place' />
+    <textarea wx:if="{{hasUser.phone}}" hidden="{{!tatShow}}" class='txa-txt' value='{{fabuData.txt}}' data-type="txt" bindblur="iptBlur" bindinput="txtareaIpt" placeholder='输入爆料内容（500字以内）' maxlength="500"  placeholder-class='pt-place'></textarea>
+    <view class="txa-txt {{!fabuData.txt?'pt-place':''}}" hidden="{{tatShow}}">{{fabuData.txt?fabuData.txt:'输入爆料内容（500字以内）'}}</view>
+    <!-- 上传视频照片 -->
+    <view class='midea-box'>
+      <view class='midea-tit'>请添加照片（最多9张）</view>
+      <view class="disflex choose-box">
+        <block wx:for="{{imgUrlData}}" wx:key="pic">
+          <view class="choose" wx:if="{{item.show}}">
+            <view class="close cover-v" data-index="{{index}}" data-type="img" bindtap="deleteImgVideo">
+            </view>
+            <image src="{{item.imgUrl}}" mode="aspectFill" data-index="{{index}}" bindtap='showBigPic'/>
+            <view class='progess-box' wx-if="{{item.isLoad}}">
+              <progress percent="{{item.progress}}" color="#333" border-radius="4" class='img-progress'></progress>
+            </view>
+          </view>
+        </block>
+        <view class="choose-img disflex j-c a-c"  hidden="{{imgUrlData.length==9?true:false}}" bindtap="chooseImg">
+          <text class="iconfont icon-xiangji"></text>
+        </view>
+      </view>
+      <view class='midea-tit'>请添加视频（最多3个）</view>
+      <view class="disflex choose-box p30">
+        <block wx:for="{{videoUrlList}}" wx:key="video">
+          <view class="choose video-box" wx:if="{{item.videoUrl}}">
+            <video id="{{'video' + index}}" src="{{item.videoUrl}}" hidden="{{item.isHidden}}" object-fit="fill" poster="{{item.imgUrl}}" controls='{{true}}'>
+            </video>
+            <image src="{{item.imgUrl}}" mode="aspectFit" data-index="{{index}}" />
+            <view class="mask" hidden="{{!item.isHidden}}" data-index="{{index}}" bindtap="playVideo"></view>
+            <view class="close cover-v" data-index="{{index}}" data-type="video" bindtap="deleteImgVideo">
+            </view>
+          </view>
+        </block>
+        <view class="choose-img disflex j-c a-c" hidden="{{videoUrlList.length==3?true:false}}" bindtap="chooseVideo">
+          <text class="iconfont icon-xiangji"></text>
+        </view>
+      </view>
+    </view>
+    <!-- 地址 -->
+    <view class='disflex map'>
+      <input class='flexn' value="{{fabuData.address}}" data-type="address" bindblur="iptBlur" placeholder='发生地点（选填）' placeholder-class='pt-place' maxlength='30'/>
+      <view class='map-icon' bindtap="getUserLocation">
+        <text class='iconfont icon-map'></text>
+      </view>
+    </view>
+    <!-- 日期 -->
+    <picker class="pick-data" mode="date" value="{{fabuData.date}}" end="{{happenDate}}" bindchange="bindDateChange">
+      <view class="picker">
+        {{fabuData.date}}
+      </view>
+    </picker>
+    <input class='ipt-tit' type='number' bindblur='regPhone' value='{{fabuData.phone}}' maxlength='11' placeholder="爆料手机号，仅管理员可见" placeholder-class='pt-place' />
+    <view class='tips' bindtap='openXY'>
+      <text class='gantanhao'>!</text>爆料协议及说明
+    </view>
+    <view class="fabu {{isUp?'on':''}}" bindtap="{{!isUp?'fabu':''}}">发布爆料</view>
+  </view>
+  <!-- 完成跳转弹窗 -->
+  <view hidden="{{!dialog.show}}" class='dialog disflex'>
+    <view class='dialog-cont'>
+      <image class="success-icon" src="../../images/fabu-suc.jpg" mode="aspectFill"></image>
+      <view class='dia-tit'>{{dialog.tit}}</view>
+      <view>
+        <view class='dia-txt'>{{dialog.txt1}}</view>
+        <view class='dia-txt'>{{dialog.txt2}}</view>
+      </view>
+      <view class='dia-btn disflex'>
+        <view class='dia-link flexn' bindtap='linkFabu'>继续爆料</view>
+        <view class='dia-link flexn' bindtap='linkBaoliaoList'>我的爆料</view>
+      </view>
+    </view>
+  </view>
+  <!-- 协议弹窗 -->
+  <view class='xy-dia disflex' hidden="{{xyShow}}">
+     <view class='xieyi'>
+      <image class='xy-tit' src="../../images/xieyi.png" mode='widthFix'></image>
+      <scroll-view class='xieyi-cont' scroll-y="true">
+        <view class='xy-txt' wx:for='{{treatyList}}' wx:key="xyTxt">
+          {{item.memo}}
+        </view>
+      </scroll-view>
+      <view class='xy-close' bindtap='xyClose'>知道了</view>
+    </view>  
+  </view>
+</view>
+
+<template is="hasUser" wx:if="{{!hasUser.phone}}" data="{{...hasUser,siteName}}"></template>
+<view class="foot-hold"></view>
+<template is="footer" data="{{navIndex,footer,is_login}}"></template>

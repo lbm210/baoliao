@@ -1,0 +1,152 @@
+<!--pages/my/my.wxml-->
+<import src="/pages/templates/templates" />
+<view wx:if="{{isLoad}}">
+  <template is="load" />
+</view>
+<view class='container'>
+  <view class='top'>
+    <view class='user disflex'>
+      <image class='tx' src="{{hasUser.userTx}}"></image>
+      <view class='user-info'>
+        <view class='info-data' bindtap='showLogin' wx:if="{{!hasUser.phone}}">
+          <view class='open-login'>点击登录</view>
+          <view class='data' wx:if='{{auditOpen==0&&!hasUser.phone}}'>发布新鲜事爆料可获得奖励哦~</view>
+        </view>
+        <view class='info-data flexn' wx:else>
+          <view class='name'>{{userData.name}}</view>
+          <view class='data' wx:if='{{auditOpen==0}}'>{{userData.memo}}</view>
+        </view>
+        <view class='money disflex' wx:if='{{auditOpen==0}}'>
+          <view class='txt disflex' bindtap='tipsShow'>钱包余额
+            <view class='gantanhao'>!
+              <view class='tips' wx:if="{{tipsShow}}">余额包括爆料现金奖励，其他打赏收益</view>
+            </view>
+          </view>
+          <view class='money-num flexn'>
+            <text wx:if="{{!hasUser.phone}}">-</text>
+            <view wx:else class='num'>{{userData.money}}</view>
+          </view>
+          <view class='tixian' bindtap='tixian'>立即提现</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='content'>
+    <view class='cont-item disflex' bindtap='linkBaoliao'>
+      <text class='iconfont icon-xiangji'></text>
+      <view class='item-right flexn disflex'>
+        <text>我的爆料</text>
+        <view class='flexn item-data'>
+          <text wx:if="{{hasUser.phone}}">共发布爆料{{userData.blNum}}条</text>
+        </view>
+      </view>
+    </view>
+    <view class='cont-item disflex' bindtap='linkJl' wx:if='{{auditOpen==0}}'>
+      <text class='iconfont icon-qianbao'></text>
+      <view class='item-right flexn disflex'>
+        <text>我的奖励</text>
+        <view class='flexn item-data'>
+          <view wx:if="{{hasUser.phone && userData.blRewardMoney}}">
+            <text class='mone'>已获奖励{{userData.blRewardMoney}}元</text>
+          </view>
+          <text wx:if="{{hasUser.phone && !userData.blRewardMoney}}">发布爆料获现金奖励</text>
+        </view>
+      </view>
+    </view>
+    <view class='cont-item disflex' bindtap='linkMsg'>
+      <text class='iconfont icon-lingdang'></text>
+      <view class='item-right flexn disflex'>
+        <text>消息通知</text>
+        <view class='flexn item-data'>
+          <text wx:if="{{userData.noReadNum && userData.noReadNum !=0}}" class='spot'></text>
+          <text class='msg-num' wx:if="{{hasUser.phone && userData.noReadNum && userData.noReadNum != 0}}">{{userData.noReadNum}}条未读消息</text>
+        </view>
+      </view>
+    </view>
+    <view class='cont-item-share' bingtap="linkShare" wx:if='{{shareOpen==1}}'>
+      <button class='share' open-type='getUserInfo' bindgetuserinfo="onGotUserInfo"></button>
+      <view class='disflex'>
+        <text class='iconfont icon-fenxiang'></text>
+        <view class='item-right flexn disflex'>
+          <text>分享好友</text>
+          <view class='flexn item-data'>
+            <text>分享给好友</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <navigator open-type='navigate' url='/pages/kefu/kefu' class='cont-item disflex'>
+      <text class='iconfont icon-kefu'></text>
+      <view class='item-right flexn disflex'>
+        <text>联系客服</text>
+        <view class='flexn item-data'>
+          <text>联系我们</text>
+        </view>
+      </view>
+    </navigator>
+    <view class='cont-item disflex' bindtap='showAppDia' wx:if='{{auditOpen==0}}'>
+      <text class='iconfont icon-xiazai'></text>
+      <view class='item-right flexn disflex'>
+        <text>APP下载</text>
+        <view class='flexn item-data'>
+          <text>下载{{siteName}}城市通APP</text>
+        </view>
+      </view>
+    </view>
+    <view class='cont-item disflex' bindtap='openToutiao' wx:if="{{userData.appId && auditOpen==0}}">
+      <text class='iconfont icon-wxa'></text>
+      <view class='item-right flexn disflex'>
+        <text>头条小程序</text>
+        <view class='flexn item-data'>
+          <text>本地事，早知道</text>
+        </view>
+      </view>
+    </view>
+    <view class='logout' bindtap='logoutDia' wx:if="{{hasUser.phone}}">
+      退出登录
+    </view>
+  </view>
+</view>
+<!-- 登录提示弹窗 -->
+<view hidden="{{dialog.toggle}}" class='dialog disflex'>
+  <view class='dialog-cont'>
+    <view class='dia-tit'>{{dialog.tit}}</view>
+    <view  wx:if="{{dialog.type=='appdown'}}">
+      <view class='dia-txt'>应用市场搜索“城市通”下载</view>
+    </view>
+    <view class='dia-btn disflex' wx:if="{{dialog.type=='login'}}">
+      <view class='dia-link flexn' bindtap='closeDia'>取消</view>
+      <view class='dia-link flexn' bindtap='showLogin'>去登录</view>
+    </view>
+    <view class='dia-btn disflex' wx:elif="{{dialog.type=='logout'}}">
+      <view class='dia-link flexn' bindtap='closeDia'>取消</view>
+      <view class='dia-link flexn' bindtap='logout'>确定</view>
+    </view>
+    <view class='dia-btn disflex' wx:elif="{{dialog.type=='appdown'}}">
+      <view class='dia-link flexn' bindtap='closeDia'>知道了</view>
+    </view>
+  </view>
+</view>
+<!-- app下载弹窗 -->
+<view class='dialog disflex' hidden="{{appDownshow}}">
+  <view class='app-dia'>
+    <view class='app-top'>
+      <view class='p1'>下载{{siteName}}城市通APP</view>
+      <view class='p1'>获得更多服务</view>
+    </view>
+    <view class='cont'>
+      <image class='app-cont' src="../../images/app-cont.png" mode="aspectFit"></image>
+      <view class='down-tip disflex'>
+        <image class='logo' mode="aspectFill" src="http://img.pccoo.cn/headline-xcx/images/zd-logo.png"></image>
+        应用市场搜索
+        <text>“城市通”</text>下载
+      </view>
+    </view>
+    <view class='close-app' bindtap='closeApp'>
+      <text class='iconfont icon-cuohao'></text>
+    </view>
+  </view>
+</view>
+<view class="foot-hold"></view>
+<template is="hasUser" wx:if="{{showLogin}}" data="{{...hasUser,siteName}}"></template>
+<template is="footer" data="{{navIndex,footer,is_login}}"></template>

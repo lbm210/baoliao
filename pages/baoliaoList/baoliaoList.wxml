@@ -1,0 +1,57 @@
+<!--pages/baoliaoList/baoliaoList.wxml-->
+<import src='/pages/templates/templates.wxml' />
+<view wx:if="{{isLoad}}">
+  <template is="load" />
+</view>
+<view wx:else class="container">
+  <block wx:for="{{contList}}" wx:key="item">
+    <view class='list-item ' data-status="{{item.status}}" data-id="{{item.tid}}" data-msg='{{item.noMsg}}' bindtap='linkBoliaoDetail'>
+      <view class="disflex p30">
+        <view class='cont-l flexn disflex'>
+          <view class='item-tit ellipsis2'>
+            {{item.tit}}
+          </view>
+          <view class='info disflex'>
+            <view class='time disflex'>
+              <text wx:if="{{item.lable}}" class='lable'>{{item.lable}}</text> {{item.date}}
+            </view>
+            <view class='status'>
+              状态：
+              <text wx:if="{{item.status == 1}}" class='green'>已采纳</text>
+              <text wx:elif="{{item.status == 2}}" class='red'>未采纳</text>
+              <text wx:elif="{{item.status == 0}}" class='red'>待采纳</text>
+            </view>
+
+          </view>
+        </view>
+        <view wx:if='{{item.video || item.img}}' class='media-box'>
+          <view class="video-box" wx:if="{{item.video}}">
+            <image class='video' mode='aspectFill' src='{{item.img}}'></image>
+            <view class='mask'></view>
+          </view>
+          <image wx:else class='img' mode='aspectFill' src='{{item.img}}'></image>
+        </view>
+      </view>
+      <view class="shenhe-err" wx:if="{{(item.status == 2||item.status == 1)&&item.noMsg}}">
+        说明：{{item.noMsg}}
+      </view>
+    </view>
+  </block>
+  <!-- 无数据 -->
+  <template wx:if="{{nodata}}" is="nodata" data="{{nodata}}"></template>
+  <navigator wx:if="{{nodata}}" class='link-fabu' url="/pages/fabu/fabu" open-type='navigate'>发布爆料</navigator>
+
+  <template is="holdBot" data="{{...holdBot}}"></template>
+  <view hidden="{{dialog.show}}" class='dialog disflex'>
+    <view class='dialog-cont'>
+      <view class='dia-tit'>{{dialog.tit}}</view>
+      <view class="p1">
+        <view class='dia-txt'>{{dialog.txt}}</view>
+      </view>
+      <view class='dia-btn disflex'>
+        <view class='dia-close flexn' bindtap='closeDia'>关闭</view>
+        <view class='dia-link flexn' bindtap='copy'>去联系</view>
+      </view>
+    </view>
+  </view>
+</view>

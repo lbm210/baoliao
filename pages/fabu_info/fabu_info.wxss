@@ -1,0 +1,41 @@
+.banner{width:100%;position:relative;overflow-x: hidden}
+.banner .site{position:absolute;top:5rpx;left:0;width:100%;height:24rpx;line-height: 20rpx;padding-left:24rpx;font-size:18rpx;color:rgba(255, 255, 255, .5);letter-spacing: 2rpx;align-items: center;justify-content: center}
+.banner .logo{width:16rpx ;height:24rpx;margin:2rpx 6rpx 0 -50rpx}
+.fabu-banner{height:150rpx;width:750rpx;}
+.fabu-tab{align-items:center;box-shadow:0 5rpx 12rpx 0 rgba(51,51,51,.2);height:120rpx;margin:30rpx 30rpx 0 30rpx;padding:0 30rpx}
+.fabu-tit{color:#333;font-size:28rpx;font-weight:bold}
+.fabu-info{color:#999;font-size:20rpx;margin-top:10rpx}
+.info-box{width:100%;padding:0 30rpx;box-sizing:border-box;overflow-x: hidden}
+.info-tit{font-size:28rpx;color:#333;line-height:28rpx;padding:40rpx 0 30rpx}
+.info-tit text{font-weight:bold}
+.info{width:100%;padding:30rpx 30rpx 60rpx;box-sizing:border-box;background:#fff;box-shadow: 0 0 30rpx -5rpx rgba(51,51,51,.2)}
+.ipt-tit{width:100%;height:80rpx;border:1rpx solid #e2e2e2;padding:0 30rpx;box-sizing: border-box;border-radius:8rpx;font-size:28rpx;color:#333;margin-bottom:30rpx;outline: #f33}
+.txa-txt{width:100%;height:240rpx;overflow-y: auto;line-height:36rpx;border:1rpx solid #e2e2e2;padding:20rpx 30rpx;box-sizing: border-box;border-radius:8rpx;font-size:28rpx;color:#333;outline: #f33}
+.pt-place{color:#999}
+.midea-tit{height:85rpx;line-height:85rpx;font-size:28rpx;color:#999}
+.choose-box{flex-wrap: wrap;}
+.choose-img{width:190rpx;height:190rpx;border:2rpx dashed #ccc;margin:0 0 30rpx 0;box-sizing: border-box;border-radius:10rpx}
+.choose-img .icon-xiangji{font-size:60rpx;color:#ccc;}
+.choose image{width:100%;height:100%}
+.choose video{position:absolute;left:0;top:0;width:100%;height:100%;object-fit: contain;border-radius:10rpx}
+.choose{width:190rpx;height:190rpx;margin:0 30rpx 30rpx 0;position: relative;border-radius:10rpx;overflow: hidden}
+.choose .progess-box{position:absolute;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;justify-content: center;align-items: center}
+.choose:nth-child(3n+3){margin-right:0;}
+.choose .close{position: absolute;width:40rpx;height:40rpx;top:0;right: 0;background:url(http://img.pccoo.cn/xcx/images/iv-close.png) no-repeat;background-size:cover;z-index:100}
+.img-progress{width:80%;height:4px;border-radius:2px}
+.p30{padding-bottom:30rpx;border-bottom:1rpx solid #e2e2e2;margin-bottom:60rpx}
+.map,.pick-data{width:100%;height:80rpx;line-height:80rpx;border:1rpx solid #e2e2e2;padding:0 0 0 30rpx;box-sizing: border-box;border-radius:8rpx;font-size:28rpx;color:#333;margin-bottom:30rpx;align-items: center}
+.map input{height:100%;}
+.map .map-icon{width:92rpx;height:40rpx;line-height:40rpx;text-align:center;border-left:1rpx solid #e2e2e2}
+.map .map-icon .icon-map{font-size:40rpx;color:#30c080}
+.tips{width:auto;display: inline-block;font-size:26rpx;color:#0075ff;line-height:26rpx;margin-bottom:60rpx}
+.tips .gantanhao{display: inline-block;vertical-align: middle;margin: -4rpx 10rpx 0 0;width:24rpx;height:24rpx;text-align:center;border-radius:50%;border:1rpx solid #f33;font-size:20rpx;color:#f33}
+.fabu{width:200rpx;height:70rpx;background:#30c080;margin:0 auto;line-height:70rpx;text-align:center;border-radius:6rpx;font-size:30rpx;color:#fff;font-weight:900;letter-spacing:2rpx}
+.fabu.on{background:#ccc;}
+.xieyi{width:500rpx;border-radius: 20rpx;background:#fff}
+.xy-tit{width:500rpx;}
+.xieyi-cont{width:100%;height:430rpx;padding:10px 30rpx;box-sizing:border-box}
+.xy-txt{font-size:26rpx;color:#2f2f2f;line-height:42rpx;margin-bottom:40rpx}
+.xy-close{width:100%;height:80rpx;border-top:1rpx solid #e2e2e2;line-height:80rpx;text-align:center;font-size:30rpx;color:#333}
+.xy-dia{position:fixed;width:100%;height:100%;top:0;bottom:0;left:0;right:0;background:rgba(0,0,0,.6);z-index: 90000;justify-content: center;align-items: center}
+.success-icon{width:140rpx;height:140rpx;display:block;margin:60rpx auto 0}

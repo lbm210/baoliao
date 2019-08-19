@@ -1,0 +1,80 @@
+/**app.wxss**/
+@import "iconfont.wxss";
+@import "wxParse/wxParse.wxss";
+
+page{font-family: 'Microsoft YaHei';height:100%}
+.container{background:#fefefe}
+.h100{height:100%}
+.disflex{display: flex}
+.fd-c{flex-direction: column}
+.j-c{justify-content: center}
+.j-a{justify-content: space-around}
+.j-b{justify-content: space-between}
+.a-c{align-items: center}
+.a-a{align-items: space-around}
+.a-b{align-items: space-between}
+.flexn{flex:1}
+.ellipsis{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.ellipsis2{display:-webkit-box;overflow:hidden;text-overflow:ellipsis;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+.ellipsis3{display:-webkit-box;overflow:hidden;text-overflow:ellipsis;-webkit-box-orient:vertical;-webkit-line-clamp:3}
+.ellipsis5{display:-webkit-box;overflow:hidden;text-overflow:ellipsis;-webkit-box-orient:vertical;-webkit-line-clamp:5}
+
+/* 获取用户信息 */
+.userinfo{position:fixed;width: 100%;height:100%;left:0;top:0;right:0;bottom:0;background: #fefefe;z-index:201908}
+.getinfo-box{display: flex;align-items: center;flex-direction: column;justify-content: flex-start;background:linear-gradient(#30c080,#30c19d);width:100%;padding-bottom:170rpx}
+.getinfo-box .user-tx{width:17pxrpx;height:170rpx;margin:120rpx 0 70rpx}
+.getinfo-box .user-btn{border-radius:40rpx;height:80rpx;line-height: 80rpx;text-align:center;width:290rpx;background:#fff;font-size:30rpx;color:rgb(46, 192, 128);font-weight:bold;margin-bottom:40rpx}
+.getinfo-box .user-name{font-size:30rpx;text-align:cetner;color:#fff;line-height:30rpx;font-weight:bold;margin-bottom:60rpx}
+.bolang{width:100%;height: 92rpx;background:url(http://img.pccoo.cn/wx/baoliao/bolang.png) no-repeat;background-size:cover}
+.bolang2{width:100%;height: 90rpx;background:url(http://img.pccoo.cn/xcx/images/bolang2.png) no-repeat;background-size:cover;margin-bottom:100rpx}
+.userinfo .fuwu{position:absolute;left: 0;bottom:70rpx;font-size:24rpx;color:#999;width:100%;text-align:center}
+
+
+/* 下拉加载样式 */
+.hold-bottom{height:72rpx;width:100%;display:flex;justify-content:center;align-items:center;font-size:24rpx;color:#666;border-top:1rpx solid #e2e2e2}
+.hold-bottom .loading{width:32rpx;height:32rpx;background: url(http://img.pccoo.cn/xcx/images/ajax-loader.gif) no-repeat;background-size: cover;margin-right:12rpx}
+
+
+/*底部自定义导航*/
+.foot-hold{height:97rpx;}
+.foot-bx{position:fixed;bottom:0;left:0;right:0;height:97rpx;text-align:center;background:#fff;border-top:1px solid #e2e2e2;z-index:2019}
+.foot-bx .get-user{position:absolute;width:100%;height:100%;left:0;top:0;opacity: 0}
+.foot-bx>.disflex{align-items:center;justify-content:center;}
+.foot-bx icon{width:60rpx;height:60rpx;display:block;margin:0 auto;}
+.foot-bx label{font-size:24rpx;display:block;color:#333;line-height:24rpx}
+.foot-bx .active label{color:#30c080;}
+.foot-bx .xicon-guangchang{background:url(http://r.imgccoo.cn/baoliao_xcx/images/xicon_guangchang.png) center center;background-size:cover;}
+.foot-bx .active .xicon-guangchang{background:url(http://r.imgccoo.cn/baoliao_xcx/images/icon_guangchang.png) center center;background-size:cover;}
+.foot-bx .xicon-bangdan{background:url(http://r.imgccoo.cn/baoliao_xcx/images/xicon_bangdan.png) center center;background-size:cover;}
+.foot-bx .active .xicon-bangdan{background:url(http://r.imgccoo.cn/baoliao_xcx/images/icon_bangdan.png) center center;background-size:cover;}
+.foot-bx .xicon-fabu{background:url(http://r.imgccoo.cn/baoliao_xcx/images/xicon_fabu.png) center center;background-size:cover;}
+.foot-bx .active .xicon-fabu{background:url(http://r.imgccoo.cn/baoliao_xcx/images/icon_fabu.png) center center;background-size:cover;}
+.foot-bx .xicon-wode{background:url(http://r.imgccoo.cn/baoliao_xcx/images/xicon_wode.png) center center;background-size:cover;}
+.foot-bx .active .xicon-wode{background:url(http://r.imgccoo.cn/baoliao_xcx/images/icon_wode.png) center center;background-size:cover;}
+/* 视频样式 */
+.video-box{width:100%;height:100%;position: relative}
+.video-box .mask{position: absolute;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.3) url(http://img.pccoo.cn/wx/images/video-play.png) no-repeat center center;background-size:60rpx 60rpx}
+
+/* 弹窗 */
+.dialog{position:fixed;width:100%;height:100%;top:0;bottom:0;left:0;right:0;background:rgba(0,0,0,.6);z-index: 2019;justify-content: center;align-items: center}
+.dialog-cont{width:540rpx;background:#fff;border-radius:16rpx;overflow: hidden;text-align:center;margin-top:-80rpx}
+.dialog-cont .dia-tit{width:100%;font-size:30rpx;line-height:28rpx;color:#333;padding:50rpx 0 30rpx}
+.dialog-cont .dia-txt{width:100%;font-size:26rpx;line-height:24rpx;color:#999;padding-bottom:10rpx}
+.dialog-cont .dia-txt:last-of-type{padding-bottom:30rpx}
+.dia-btn{height:80rpx;line-height: 80rpx;font-size:30rpx;color:#333;border-top:1rpx solid #e2e2e2}
+.dia-btn>view:last-child{border-left:1rpx solid #e2e2e2}
+.dia-btn .dia-link{color:#0075ff}
+/* 暂无数据 */
+.nodata{width:100%;padding:300rpx 0 36rpx;background: url(http://r.imgccoo.cn/friend_wap/images/icon_xiaoxi.png) no-repeat center 120rpx;background-size:180rpx 144rpx;font-size:28rpx;color:#666;text-align:center}
+/* 页面初始加载 */
+.after-bg{position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:#fff;font-size:28rpx;text-align:center;box-sizing:border-box;color:#666;z-index:99999}
+.after-bg .bg-logo{background: url(http://img.pccoo.cn/wx/images/ic_loading.gif) no-repeat;width:160rpx;height:160rpx;margin:360rpx auto 30rpx;background-size:cover}
+.after-bg .txt{text-align:center}
+.after-bg .loading{width:40rpx;height:40rpx;vertical-align: middle;margin-top:-8rpx}
+.user-up-btn{position: absolute;width:100%;height:100%;opacity: 0}
+.wxParse-img{width:100%;display:block;margin-bottom:20rpx}
+.back-page{border-radius:40rpx;line-height: 80rpx;text-align:center;width:290rpx;font-size:30rpx;color:#fff;box-sizing: border-box;border:1px solid #fff}
+.getinfo-box navigator.user-btn{margin-bottom: 159rpx}
+.dialog2{width:100%;height:100%;background:rgba(0, 0, 0, .6);display: flex;justify-content: center;align-items: center;position: fixed;left:0;top:0;bottom:0;right:0;z-index:9999999}
+.dialog2 .dialog-cont{width:540rpx;padding:30rpx 0 0;background: #fff;border-radius:10rpx;box-sizing:content-box}
+.dialog2 .dialog-tit{font-size:32rpx;text-align:center;color:#333;margin-bottom:40rpx}

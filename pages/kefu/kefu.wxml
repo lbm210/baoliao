@@ -1,0 +1,64 @@
+
+<!--pages/kefu/kefu.wxml-->
+<import src="/pages/templates/templates" />
+<view wx:if="{{isLoad}}">
+  <template is="load" />
+</view>
+<view class='container'>
+
+  <view class="item-box">
+    <view class="title">如何联系客服？</view>
+    <view class='item'>
+      <view class='tit disflex'>
+        <text class='label'>方法1</text>拨打客服电话
+      </view>
+      <view class='telphone disflex'>
+        <view>
+          客服电话：{{phone}}
+        </view>
+        <view class='tel' bindtap='telphone'>拨打</view>
+      </view>
+    </view>
+    <view class='item'>
+      <view class='tit disflex'>
+        <text class='label'>方法2</text>添加客服微信
+      </view>
+      <view class='weixin disflex'>
+        <view>
+          客服微信号：{{weixin}}
+        </view>
+        <view class='tel' bindtap='copy'>复制</view>
+      </view>
+      <view class='erweima disflex' bindtap="showBigKF">
+        <image class='ewm' src='{{ewm}}' mode='aspectFit'></image>
+        <text>{{ewmTxt}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="item-box">
+    <view class="title">加入爆料社群</view>
+    <view class='item bbs'>
+      <view class="bbs-txt">{{bbsTit}}</view>
+      <view class='erweima disflex' bindtap="showBigBBS">
+        <image class='ewm' src='{{ewm}}' mode='aspectFit'></image>
+        <text>{{bbsEwmTxt}}</text>
+      </view>
+    </view>
+     <!-- <view class='step disflex'>
+        <view class='step-item disflex'>
+          <text class='iconfont icon-baocun'></text>
+          <view class='txt'>保存二维码</view>
+        </view>
+        <view class='jiantou'>></view>
+        <view class='step-item disflex'>
+          <text class='iconfont icon-CombinedShape'></text>
+          <view class='txt'>微信扫码</view>
+        </view>
+        <view class='jiantou'>></view>
+        <view class='step-item disflex'>
+          <text class='iconfont icon-tupian'></text>
+          <view class='txt'>选择图片</view>
+        </view>
+      </view> -->
+  </view>
+</view>

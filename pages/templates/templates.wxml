@@ -1,0 +1,49 @@
+<!--pages/components/compoments.wxml-->
+<!-- 登录 -->
+<template name="hasUser">
+  <view class="userinfo">
+    <view class="getinfo-box">
+      <image class='user-tx' mode='aspectFit' src="{{userTx}}"></image>
+      <button class='user-btn' open-type="getPhoneNumber" bindgetphonenumber="getphonenumber"> 微信授权登录 </button>
+      <navigator open-type='navigate' url="{{loginUrl}}" class='user-btn'> 手机号注册/登录 </navigator>
+      <view class="back-page" bindtap="closeLogin">取消</view>
+    </view>
+    <view class='bolang'></view>
+    <view class='fuwu'>
+      <text>©</text> {{siteName}}提供安全登录服务支持
+    </view>
+  </view>
+</template>
+<!-- 底部导航 -->
+<template name="footer">
+  <view class="foot-bx">
+    <button wx:if="{{!is_login}}" open-type='getUserInfo' bindgetuserinfo="getUserInfo"  class='get-user'></button>
+    <view class='disflex'>
+      <block wx:for="{{footer}}" wx:key="item" wx:for-index="index">
+      <navigator wx:if="{{item.isOpen == 1}}" class="flexn {{navIndex==index?'active':''}}" hover-class="none" open-type="redirect" url="{{item.url}}">
+        <icon class="{{item.icon}}"></icon>
+        <label>{{item.txt}}</label>
+      </navigator>
+    </block>
+    </view>
+  </view>
+</template>
+<!-- 触底加载 -->
+<template name="holdBot">
+  <view class='hold-bottom' wx:if="{{show}}">
+    <view class="loading" wx:if="{{loading}}"></view>{{text}}
+  </view>
+</template>
+<!-- 无数据 -->
+<template name="nodata">
+  <view class='nodata' wx:if="{{nodata}}">- 暂无数据 -</view>
+</template>
+<!-- 页面初始显示加载 -->
+<template name="load">
+  <view class='after-bg'>
+    <view class='bg-logo'></view>
+    <view class='txt'>
+      正在加载，请稍后...
+    </view>
+  </view>
+</template>

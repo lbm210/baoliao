@@ -1,0 +1,46 @@
+<!--pages/poster/poster.wxml-->
+<import src="/pages/templates/templates" />
+<view wx:if="{{isLoad}}">
+  <template is="load" />
+</view>
+<view class='container'>
+  <view class='poster-tit'>
+    <view class='v1'>邀请好友一起爆料，共建美丽{{siteCity}}！</view>
+    <view class='v2'>成功邀请一位好友注册并发布爆料通过审核，你将获得 <text class='t1'>{{reward}}元</text> 奖励！</view>
+    <!-- <view class="v3">每个月可完成{{taskNum}}次任务哦~</view> -->
+  </view>
+  <view class="share-cover">
+    <view class="share-box">
+      <view class="poster">
+        <view class="poster-box">
+          <view class="ban-box">
+            <image class="banner" mode="aspectFill" src="{{banner}}"></image>
+            <view class="logo-box">
+              <image mode="aspectFill" class="logo" src="{{logo}}"></image>
+              <view>{{siteName}}</view>
+            </view>
+          </view>
+          <view class="bot-box">
+            <text class="tit">{{title}}</text>
+            <view class="disflex">
+              <image mode="aspectFill" class="ewx" src="{{ewx}}"></image>
+              <view class="flexn disflex vi1">
+                <view class="p1">
+                  <image mode="aspectFill" class="avatar" src="{{avatar}}"></image>
+                  <text class="nickName">{{nickName}}</text>
+                  <text>邀请你参加{{siteName}}爆料</text>
+                </view>
+                <text class="p2">长按小程序码参加，爆料成功有现金奖励哦</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="poster-tip">点击保存到手机相册</view>
+        <button class="save-btn" bindtap="savePoster">保存并分享</button>
+      </view>
+    </view>
+    <view class="canvas-box">
+      <canvas canvas-id="mycanvas" />
+    </view>
+  </view>
+</view>

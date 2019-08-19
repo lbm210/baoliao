@@ -1,0 +1,22 @@
+<!--pages/msg/msg.wxml-->
+<import src="/pages/templates/templates" />
+<view wx:if="{{isLoad}}">
+  <template is="load" />
+</view>
+<view class='container'>
+  <block wx:for="{{msgList}}" wx:key="item">
+    <view class='item'>
+      <view class='tit disflex'>
+        <image class='tit-pic' mode='aspceFit' src="../../images/laba.jpg"></image>
+        系统消息
+      </view>
+      <view class='txt'>
+        {{item.message}}
+      </view>
+      <view class='link' data-type="{{item.state}}" data-id="{{item.tId}}" bindtap="link">查看详情</view>
+    </view>
+  </block>
+</view>
+  <template is="holdBot" data="{{...holdBot}}"></template>
+   <!-- 无数据 -->
+  <template wx:if="{{nodata}}" is="nodata" data="{{nodata}}"></template>

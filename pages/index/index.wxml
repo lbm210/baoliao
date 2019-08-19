@@ -1,0 +1,104 @@
+ <!--index.wxml-->
+<import src="../templates/templates.wxml" />
+<template is="hasUser" wx:if="{{isLogin}}" data="{{...hasUser,siteName}}"></template>
+
+<view wx:if="{{isLoad}}">
+  <template is="load" />
+</view>
+
+<view class="container">
+<!-- 头部信息 -->
+  <view class='ban-box'>
+    <image class='in-ban' mode="widthFix" src="{{banner?banner:'../../images/index-banner.jpg'}}"></image>
+    <!-- 站点信息 -->
+    <view class='site'>{{siteName}}旗下小程序</view>
+    <!-- 轮播 -->
+    <view class='swiper-box disflex'>
+      <view class='swiper-tit'>奖励播报</view>
+      <swiper class='flexn' vertical="{{true}}" circular="{{true}}" autoplay="{{true}}" interval="4000" duration="800">
+        <block wx:for="{{broadcast}}" wx:key="broadcast">
+          <swiper-item class="swiper-items disflex" >
+            <view class='ellipsis'>{{item.txt}}</view>
+            <view class='time'>{{item.date}}</view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+  <!-- 频道切换 -->
+  <scroll-view class='nav' scroll-x="{{true}}">
+    <block wx:for="{{labelList}}" wx:key="label">
+      <view class='nav-item' bindtap='getBaoliaoTpye' data-id="{{item.id}}">
+        <image class='nav-bg'  src="{{item.img}}" mode='aspectFill'></image>
+        <view>#{{item.txt}}#</view>
+      </view>
+    </block>
+  </scroll-view>
+  <!-- 爆料列表 -->
+  <view class='baoliao'>
+    <view class='bl-tit disflex'>
+      <text class='sm'></text>
+      <text class='big'></text>
+      <text class='txt'>最新爆料</text>
+      <text class='big'></text>
+      <text class='sm'></text>
+    </view>
+    <block wx:for="{{infoList}}" wx:key="infoList">
+      <view class='info-item'>
+        <view class='item-link' bindtap='linkBaoliaoDetail' data-id="{{item.id}}">
+          <view class='user-info disflex'>
+          <view class="tx">
+            <image class='tx' src="{{item.tx?item.tx:'../../images/user-tx-d.png'}}" mode="aspectFill"></image>
+          </view>
+            <view class='info flexn disflex'>
+              <view class='name'>{{item.name}}</view>
+              <view class='date'>{{item.date}}</view>
+            </view>
+            <view class='label'>{{item.label}}</view>
+          </view>
+          <view class="user-tit">{{item.tit}}</view>
+          <view class='user-txt'>{{item.txt}}</view>
+          <view class='media' wx:if="{{ item.video || item.imgnum > 0 }}">
+            <view class='media-box disflex'>
+              <view class="video-box" wx:if="{{item.video}}" wx:for="{{item.video}}" wx:for-item="videoItem" wx:key="videoItem">
+                <image class='video'  mode='aspectFill' src='{{videoItem.videoPic}}'></image>
+                <view class='mask'></view>
+              </view>
+              <view  wx:for="{{item.img}}" wx:for-index="imgIndex" wx:key="itemImg" wx:if="{{((!item.video && imgIndex < 3) || ((item.video.length + imgIndex) < 3)) && item.imgnum}}" class='img-box' wx:for-item="imgItem">
+                <image class='img' mode='aspectFill' src='{{imgItem}}'></image>
+              </view>
+            </view>
+            <view class='img-more' wx:if="{{ (item.video && (item.video.length + item.img.length) > 3) || item.img.length > 3 }}">共{{item.imgnum}}图</view>
+          </view>
+        </view>
+        <view class='item-bot disflex'>
+          <view class='address flexn'>
+            <text class='iconfont icon-map' wx:if="{{item.address}}"></text>{{item.address}}
+          </view>
+          <view class='num disflex'>
+            <button wx:if="{{!is_login}}" open-type='getUserInfo' bindgetuserinfo="getUserInfo"  class='user-up-btn'></button>
+            <view class='m20' bindtap='thumbsUp' data-id="{{item.id}}" data-index="{{index}}">
+            
+              <text class='iconfont {{item.isZan?"icon-xin2":"icon-xin"}} {{item.animate?"on":""}}'></text>
+              {{item.zan}}
+            </view>
+            <view class='{{item.hot >= 50 && item.hot < 400?"green":""}} {{item.hot >= 400 && item.hot < 1000?"yellow":""}} {{item.hot >= 1000?"red":""}}'>
+              <text class='iconfont icon-hot'>
+              </text>
+              {{item.hot}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <template wx:if="{{nodata}}" is="nodata" data="{{nodata}}"></template>
+  </view>
+  <template wx:if="{{!nodata}}" is="holdBot" data="{{...holdBot}}"></template>
+  <view class="foot-hold"></view>
+  <template is="footer" data="{{navIndex,footer,is_login}}"></template>
+</view>
+<view hidden="{{!isEnd}}" class='dialog2'>
+  <view class='dialog-cont'>
+    <view class='dialog-tit'>小程序授权已到期</view>
+  </view>
+</view>

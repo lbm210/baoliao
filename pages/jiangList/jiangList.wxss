@@ -1,0 +1,10 @@
+/* pages/jiangList/jiangList.wxss */
+.container{padding:0 28rpx;width:100%;box-sizing:border-box}
+.item{width:100%;height:160rpx;overflow: hidden;align-items:center;border-bottom:1rpx solid #e2e2e2}
+.item:last-of-type{border-bottom:none}
+.item .disflex{flex-direction:column;justify-content: center;overflow: hidden}
+.money{width:130rpx;font-size:32rpx;line-height:32rpx;color:#ffaf16;margin:0 16rpx}
+.reward{width:40rpx;height:40rpx}
+.tit{font-size:28rpx;color:#333;line-height:36rpx;margin-bottom:14rpx}
+.time{font-size:24rpx;color:#999;line-height:24rpx}
+.link-fabu{width:200rpx;height:60rpx;border-radius:30rpx;line-height:60rpx;text-align: center;font-size:28rpx;color:#fff;background:#f42a47;margin:0 auto}

@@ -1,0 +1,64 @@
+/**index.wxss**/
+.ban-box{position: relative;width:100%;margin-bottom:64rpx}
+.ban-box .in-ban{width:100%}
+.ban-box .site{position:absolute;bottom:45rpx;right:30rpx;height:24rpx;background:url(http://img.pccoo.cn/xcx/images/site-logo.png) no-repeat;background-size:16rpx 24rpx;line-height: 20rpx;padding-left:24rpx;font-size:20rpx;color:rgba(255, 255, 255, .5);letter-spacing: 2rpx}
+.ban-box .swiper-box{position: absolute;left:30rpx;bottom:-35rpx;width:690rpx;height: 70rpx;align-items: center;background: #fff;border-radius:8rpx;box-shadow:0 4rpx 20rpx -6rpx rgba(0, 0, 0, .3)}
+.swiper-tit{width:144rpx;height:26rpx;background: url(http://img.pccoo.cn/xcx/images/jiangli.jpg) no-repeat center center;background-size:106rpx 26rpx;border-right:1rpx solid #e2e2e2;margin-right:18rpx;text-indent:-999999999rpx}
+.ban-box swiper{height:100%;overflow: hidden;padding-right:20rpx;box-sizing: border-box}
+.ban-box .swiper-items{height:100%;line-height:70rpx;overflow: hidden;font-size:26rpx;color:#666}
+.ban-box .swiper-items .time{margin-left:8rpx;color:#ccc;flex-shrink:0}
+.nav{margin-left:30rpx;width:calc(100% - 30rpx);height:80rpx;padding-bottom:30rpx;border-bottom:1rpx solid #e2e2e2;white-space:nowrap;margin-bottom:50rpx}
+.nav-item{width:200rpx;height:80rpx;display:inline-block;overflow: hidden;border-radius: 10rpx;position:relative;margin-right:10rpx}
+.nav-item .nav-bg{width:200rpx;height:80rpx}
+.nav-item>view{position:absolute;left:0;top:0;width:100%;height:100%;line-height:80rpx;text-align:center;font-size:26rpx;color:#fff}
+.baoliao{padding:0 30rpx;}
+.bl-tit{font-size:32rpx;color:#333;font-weight:900;line-height:32rpx;justify-content: center;align-items: center;margin-bottom:40rpx}
+.bl-tit text{margin:0 2rpx}
+.bl-tit .txt{margin:0 10rpx}
+.bl-tit .sm{width:4rpx;height:4rpx;background: #30c080}
+.bl-tit .big{width:10rpx;height:10rpx;background: #30c080}
+.info-item{border-bottom:1rpx solid #e2e2e2;margin-bottom:40rpx}
+.info-item:last-of-type{border-bottom:none;margin-bottom:0}
+.info-item .user-info{align-items: center;margin-bottom:12rpx}
+.info-item .tx{width:70rpx;height:70rpx;border-radius:50%;margin-right: 20rpx;flex-shrink: 0}
+.info-item .info{overflow: hidden;height:70rpx;justify-content: center;flex-direction: column}
+.info-item .info .name{font-size:26rpx;color:#333;line-height:24rpx;padding-bottom:8rpx;font-weight:700}
+.info-item .info .date{font-size:22rpx;color:#999;line-height:20rpx;padding-top:8rpx}
+.info-item .label{flex-shrink: 0;padding:2rpx 10rpx 0;border:2rpx solid #30c080;line-height: 34rpx;text-align:center;border-radius:4rpx;font-size:22rpx;color:#30c080}
+.user-tit{font-size: 32rpx;color:#333;line-height:48rpx;font-weight:700;margin-bottom:8rpx;display:-webkit-box;overflow:hidden;text-overflow:ellipsis;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+.user-txt{font-size: 28rpx;color:#333;line-height:42rpx;margin-bottom:12rpx;display:-webkit-box;overflow:hidden;text-overflow:ellipsis;-webkit-box-orient:vertical;-webkit-line-clamp:3}
+.media-box{flex-wrap: wrap}
+.media-box .video-box{position: relative;border-radius:8rpx;overflow: hidden}
+.media-box>view{width:222rpx;height:222rpx;margin-right:12rpx}
+.media-box>view:nth-child(3n+3){margin-right:0}
+.media-box image{width:222rpx;height:222rpx;border-radius:8rpx;}
+.video-box .mask{position: absolute;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.3) url(http://img.pccoo.cn/wx/images/video-play.png) no-repeat center center;background-size:90rpx 90rpx}
+.item-bot{align-items: center;height:90rpx;color:#999}
+.item-bot .address{font-size:22rpx;line-height: 20rpx}
+.item-bot .address .iconfont{font-size:20rpx;margin-right: 8rpx}
+.item-bot .num{font-size:26rpx;line-height:28rpx;position: relative}
+.item-bot .num .m20{margin-right:20rpx}
+.item-bot .num .iconfont{font-size:28rpx}
+.item-bot .num .icon-xin2{color:#f63c51}
+.item-bot .num .green{color:#3bd881}
+.item-bot .num .yellow{color:#f6a838}
+.item-bot .num .red{color:#f6383c}
+.item-bot .num .on{animation: big .5s ease;display: inline-block}
+@keyframes big{
+  0%{-webkit-transform: scale(1,1);transform: scale(1,1);opacity:1}
+  80%{-webkit-transform: scale(1.5,1.5);transform: scale(1.5,1.5);opacity:.4}
+  100%{-webkit-transform: scale(1,1);transform: scale(1,1);opacity:1}
+}
+.media{width:100%;position:relative}
+.media .img-more{position:absolute;bottom:0;right:0;padding:0 10rpx;height:34rpx;background:rgba(0, 0, 0, .7);line-height:34rpx;text-align:center;font-size:22rpx;color:rgba(255, 255, 255, .7);border-radius:8rpx 0 8rpx 0}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+/* pages/baoliaoList/baoliaoList.wxss */
+.container{width:100%;padding:30rpx 30rpx 0;box-sizing:border-box;background: #fefefe}
+.list-item{width:100%;padding:30rpx 20rpx 0;box-sizing:border-box;box-shadow: 0 0 20rpx -4rpx rgba(0, 0, 0, .3);border-radius:10rpx;overflow: hidden;background:#fff;margin-bottom:30rpx}
+.cont-l{height:120rpx;margin-right:20rpx;flex-direction: column;justify-content: space-between}
+.item-tit{line-height:36rpx;font-size:32rpx;height:72rpx;color:#333;font-weight: 900}
+.info{width:100%;font-size:22rpx;justify-content: space-between;}
+.p30{padding-bottom:30rpx}
+.shenhe-err{line-height:36rpx;width:100%;font-size:24rpx;color:#666;border-top:1rpx solid #e2e2e2;padding: 12rpx 0}
+.time{align-items: center;color:#999}
+.lable{padding:0 10rpx;height:36rpx;box-sizing:border-box;border:1rpx solid #30c080;line-height: 34rpx;text-align:center;border-radius:4rpx;font-size:22rpx;color:#30c080;margin-right:30rpx}
+.status{color:#666;height:36rpx;line-height:36rpx}
+.green{color:#30c080}
+.red{color:#f42a47}
+.media-box{flex-shrink:0;width:120rpx;height:120rpx;border-radius:6rpx;overflow: hidden;position: relative}
+.media-box image{width: 120rpx;height:120rpx;object-fit: cover}
+.link-fabu{width:200rpx;height:60rpx;border-radius:30rpx;line-height:60rpx;text-align: center;font-size:28rpx;color:#fff;background:#f42a47;margin:0 auto}
+.dialog-cont .p1{width:100%;padding:0 30rpx;box-sizing:border-box}
+.dialog-cont .p1 .dia-txt{line-height:36rpx}
+

@@ -1,0 +1,195 @@
+<import src="../templates/templates" />
+<import src="../../wxParse/wxParse" />
+
+<view wx:if="{{isLoad}}">
+  <template is="load" />
+</view>
+<view wx:else class="container">
+  <view class='top-title'>
+    {{detaileData.title}}
+  </view>
+  <view class='article-info disflex'>
+    <text wx:if="{{detaileData.label}}" class='label'>{{detaileData.label}}</text>
+    <!-- <text class='read-num flexn'>{{detaileData.readNum}} 阅读</text> -->
+    <text class='read-num flexn'></text>
+    <view wx:if="{{detaileData.hot}}" class='hot {{detaileData.hot >= 50 && detaileData.hot < 400?"green":""}} {{detaileData.hot >= 400 && detaileData.hot < 1000?"yellow":""}} {{detaileData.hot >= 1000?"red":""}}'>
+      <text class='iconfont icon-hot'></text> {{detaileData.hot}}
+    </view>
+  </view>
+  <!-- 内容 -->
+  <view class='content'>
+    <view class='user disflex'>
+      <image class='us-tx' mode='aspectFill' src="{{detaileData.userTx}}"></image>
+      <view class='u-right'>
+        <view class='us-name'>{{detaileData.nick}}</view>
+        <view class='us-time'>{{detaileData.time}}</view>
+      </view>
+    </view>
+    <view class='info-txt'>
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
+    <view wx:if="{{review}}">
+      <view class="zan-box">
+        <button wx:if="{{!is_login}}" data-type="getUserInfo" open-type='getUserInfo' bindgetuserinfo="getUserInfo" class='user-up-btn'></button>
+        <view class='zan' bindtap='thumbsUp' data-id="{{detailId}}">
+          <text class='iconfont {{detaileData.isZan?"icon-dianzan2":"icon-dianzan"}} {{detaileData.animate?"animate":""}}'></text> {{detaileData.isZan?"已赞":"点赞"}}</view>
+      </view>
+      <view class='zan-tip'>您的点赞会让我分享更多爆料</view>
+      <view class='zan-num-box'>
+        <view class='zan-num'>{{detaileData.zanNum?detaileData.zanNum:"还没有"}}人赞过</view>
+      </view>
+      <view class='zan-user disflex'>
+        <block wx:for="{{detaileData.zanTx}}" wx:key="zanNum">
+          <image wx:if="{{index < 9}}" class='zan-pic' src="{{item.roleImg}}" mode="aspectFill"></image>
+          <view wx:if="{{index == 8}}" class="zan-more">...</view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+
+
+  <view wx:if="{{shieldIsOpen==0 && review}}" class='tips disflex'>
+    <image class='logo' src='{{logo}}' mode="aspectFill"></image>
+    <text class='red'>{{site}}</text>
+    <text>旗下爆料小程序，聚城市力量，建美丽家园</text>
+  </view>
+  <!-- 精彩推荐 -->
+  <view class='his-info' wx:if="{{review}}">
+    <view wx:if="{{itemsList.length>0}}" class='his-txt'>- 精彩推荐 -</view>
+    <block wx:for="{{itemsList}}" wx:key="unique">
+      <navigator url="{{item.url}}" class='cont-item disflex'>
+        <view class='item-l flexn'>
+          <view class='title'>{{item.title}}</view>
+          <view class='info disflex'>
+            <text class='label'>{{item.labelName}}</text>
+            <text>{{item.readerNum}}</text>
+          </view>
+        </view>
+        <view class='item-r'>
+          <view class='video-box' wx:if="{{item.IsVideo==1}}">
+            <image mode="aspectFill" class='video' src="{{item.img}}"></image>
+            <view class='mask'></view>
+          </view>
+          <image wx:if="{{item.IsVideo==0}}" class='pic' src="{{item.img}}" lazy-load='true' mode='aspectFill'></image>
+        </view>
+      </navigator>
+    </block>
+  </view>
+
+  <!-- 评论 -->
+  <view class='pinglun' wx:if="{{review}}">
+    <view wx:if="{{pinglun.length>0}}" class='his-txt'>- 热门评论 -</view>
+    <block wx:for="{{pinglun}}" wx:key="key">
+      <view class='pl-item disflex'>
+        <image class='tx' src="{{item.tx}}" mode="aspectFill"></image>
+        <view class='user flexn'>
+          <view class='user-info'>
+            <text class='username'>{{item.nick}}</text>
+            <text class="lv {{item.lv<21 && item.lv > 10?'blue':''}} {{item.lv<11?'green':''}}">LV.{{item.lv}}</text>
+            <text class="zhiding" wx:if="{{item.isTop==1}}">置顶</text>
+          </view>
+          <view class='other-info'>
+            <text class='time'>{{item.time}}</text>
+            <text class='address'>{{item.address}}</text>
+          </view>
+          <!-- 评论内容 -->
+          <view class='txt'>
+            <rich-text nodes="{{item.txt}}"></rich-text>
+          </view>
+          <view class='huifu' wx:if="{{item.child.length}}">
+            <view class='huifu-item' wx:for="{{item.child}}" wx:key="itemChild" wx:for-item="items" wx:if="{{index < item.childMax}}">
+              <view class='hf-size disflex'>
+                <text class='huifu-user'>{{items.nick}}：</text>
+                <view class="flexn">
+                  <rich-text nodes="{{items.txt}}"></rich-text>
+                </view>
+              </view>
+              <view class='time'>{{items.time}}</view>
+            </view>
+            <view class='more' id="{{index}}" bindtap='more' wx:if="{{item.length > 2}}">{{item.moreTxt}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- bottom -->
+  <view wx:if="{{pinglun.length>0&&shieldIsOpen==0 && review}}" class='link-app'>
+    更多精彩回复，请打开{{site}}（城市通APP）查看
+  </view>
+</view>
+<view wx:if="{{shieldIsOpen==0 && review}}" class='down-app'>
+  <text class='guanz flexn'>下载 {{site}} 城市通APP</text>
+</view>
+<!-- 分享，保存图片 -->
+<view wx:if="{{shieldIsOpen==0 && review}}" class='fixed-box'>
+  <view class='share-save disflex'>
+    <view class='share flexn'>
+      <image src="../../images/share.jpg" mode="aspectFill"></image>
+      分享给朋友
+      <button open-type='share'></button>
+    </view>
+    <view class='save flexn'>
+      <image src="../../images/save.jpg" mode="aspectFill"></image>
+      生成海报
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <button wx:if="{{hasUserInfo}}" bindtap="shareFn">生成海报</button>
+    </view>
+
+  </view>
+</view>
+<!-- 占位 -->
+<view class='bottom-place'></view>
+<!--邀请好友一起-->
+<view class="share-cover" hidden="{{flag}}">
+  <view class="share-box">
+    <button class="v-style pop-close" type="default" bindtap="cancelShareFn"></button>
+    <view class="poster">
+      <view class="poster-box">
+        <view class="ban-box">
+          <image class="banner" mode="aspectFill" src="{{banner}}"></image>
+          <view class="logo-box">
+            <image mode="aspectFill" class="logo" src="{{logo}}"></image>
+            <view>{{siteName}}</view>
+          </view>
+        </view>
+        <view class="bot-box">
+          <text class="tit">{{popTitle}}</text>
+          <view class="disflex">
+            <image mode="aspectFill" class="ewx" src="{{ewx}}"></image>
+            <view class="flexn">
+              <view class="p1">
+                <image mode="aspectFill" class="avatar" src="{{avatar}}"></image>
+                <text class="nickName">{{nickName}}</text>
+                <text>正在读这篇文章</text>
+              </view>
+              <text class="p2">长按小程序码，进入<text class="site">{{popSite}}</text>查看详情</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="poster-tip">{{posterTip}}</view>
+      <button class="save-btn" bindtap="{{saveBind}}">{{saveBtn}}</button>
+    </view>
+  </view>
+  <view class="canvas-box">
+    <canvas canvas-id="mycanvas" />
+  </view>
+</view>
+<!-- 登录提示弹窗 -->
+<view hidden="{{dialog.toggle}}" class='dialog disflex'>
+  <view class='dialog-cont'>
+    <view class='dia-tit'>登录后才可以点赞</view>
+    <view class='dia-btn disflex'>
+      <view class='dia-link flexn' bindtap='closeDia'>以后再说</view>
+      <view class='dia-link flexn' bindtap='showLogin'>去登录</view>
+    </view>
+
+  </view>
+</view>
+<!-- 回到首页 -->
+<navigator hidden="{{backIndex}}" class='link-index' open-type="reLaunch" url="../index/index">
+  <image class='shouye' mode="aspectFill" src="../../images/shouye.png"></image>
+  <text>首页</text>
+</navigator>
+<template is="hasUser" wx:if="{{showLogin}}" data="{{...hasUser,siteName}}"></template>

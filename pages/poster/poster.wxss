@@ -1,0 +1,30 @@
+/* pages/poster/poster.wxss */
+/*海报弹窗*/
+.poster-tit{width:100%;height:250rpx;background:url(http://img.pccoo.cn/xcx/images/poster-t.png) no-repeat;background-size:100% 100%;text-align:center}
+.poster-tit .v1{font-size:36rpx;color:#fff;font-weight:900;line-height:38rpx;padding:68rpx 0 22rpx}
+.poster-tit .v2{font-size:22rpx;color:#ade9ce;line-height:22rpx;margin-bottom:20rpx}
+.poster-tit .v2 .t1{color:#fff;font-weight:900}
+.poster-tit .v3{font-size:24rpx;color:#fff799}
+.share-box .pop-close{width:60rpx;height:60rpx;background:url(http://img.pccoo.cn/headline-xcx/images/pop-close.jpg) no-repeat center center;background-size:30rpx 30rpx;display:inline-block;position:absolute;left:30rpx;top:30rpx;padding:0;}
+.share-box .v-style:after{border:none;}
+.poster{padding:70rpx 0 40rpx;}
+.save-btn{width:300rpx;height:80rpx;line-height:80rpx;background:#30c080;color:#fff;border-radius:30px;font-size:32rpx;}
+.poster-tip{font-size:26rpx;color:#666;text-align:center;margin-bottom:40rpx;}
+.poster-box{width:540rpx;height:600rpx;margin:0 auto 40rpx;background:#fff;box-shadow:0 5rpx 12rpx 0 rgba(51,51,51,.2)}
+.poster-box .ban-box{width:100%;height:275rpx;position:relative;}
+.poster-box .ban-box .banner{width:100%;height:100%;}
+.poster-box .logo-box{position:absolute;left:18rpx;top:18rpx;height:30rpx;line-height:30rpx;font-size:22rpx;color:#fff;overflow:hidden;}
+.poster-box .logo{width:30rpx;height:30rpx;float:left;margin-right:16rpx;}
+.poster-box .logo-box view{float:left;}
+.poster-box .bot-box{padding:0 17rpx;}
+.poster-box .bot-box .tit{margin:22rpx 0 30rpx;font-size:26rpx;color:#333;line-height:40rpx;display:-webkit-box;overflow:hidden;white-space:normal;text-overflow:ellipsis;-webkit-box-orient:vertical;-webkit-line-clamp:3}
+.poster-box .bot-box .ewx{width:98rpx;height:98rpx;margin-right:20rpx}
+.poster-box .bot-box .vi1{flex-direction: column;justify-content: center}
+.poster-box .bot-box .p1{color:#666;font-size:22rpx;line-height:40rpx;overflow:hidden;margin-bottom:10rpx}
+.poster-box .bot-box .p1 text{float:left;}
+.poster-box .bot-box .p1 .avatar{width:40rpx;height:40rpx;float:left;border-radius:50%}
+.poster-box .bot-box .p1 .nickName{margin:0 8rpx;color:#333;}
+.poster-box .bot-box .p2{color:#666;font-size:20rpx;overflow:hidden;line-height:20rpx;display:block}
+.poster-box .bot-box .p2 .site{color:#ee2e2e;margin:0 6rpx;}
+.canvas-box{position:fixed;left:0;right:0;bottom:-9999999px;width:100%;height:900rpx;background:#fff;z-index:21;}
+.canvas-box canvas{width:100%;height:900rpx;background:#fff}

@@ -1,0 +1,133 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.7.2",
+	"appid": "wxee9b077d9c32bbd6",
+	"projectname": "baoliao",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 10,
+			"list": [
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "fabu",
+					"pathName": "pages/fabu/fabu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "baoliaoList",
+					"pathName": "pages/baoliaoList/baoliaoList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "fabuInfo",
+					"pathName": "pages/fabu_info/fabu_info",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "jiangli",
+					"pathName": "pages/jiangList/jiangList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "kefu",
+					"pathName": "pages/kefu/kefu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "msg",
+					"pathName": "pages/msg/msg",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "baoliaoDetail",
+					"pathName": "pages/baoliaoDetail/baoliaoDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "poster",
+					"pathName": "pages/poster/poster",
+					"query": "tx=https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqU3zyhmRgfHTHGL8pdfbcTD5sl7lQcyDJEOZqqKHuj91xDah6VZmiaLRt3fox9k0Ya5Drsomu3Nibg/132&name=芊芊",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "rank",
+					"pathName": "pages/ranking/ranking",
+					"query": "tx=https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eqU3zyhmRgfHTHGL8pdfbcTD5sl7lQcyDJEOZqqKHuj91xDah6VZmiaLRt3fox9k0Ya5Drsomu3Nibg/132&name=芊芊",
+					"scene": null
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,27 @@
+<!--pages/login/login.wxml-->
+<import src="/pages/templates/templates" />
+<view wx:if="{{isLoad}}">
+  <template is="load" />
+</view>
+<view class='container'>
+  <view class='bolang2'></view>
+  <view class='cont'>
+    <view class='ipt-box disflex'>
+      <view class='icon-box'>
+        <text class='iconfont icon-shouji'></text>
+      </view>
+      <input type='number' bindblur='iptBlur' bindinput='iptInput' data-type="phone" maxlength='11' class='ipt phone flexn' value="{{phone}}" placeholder='输入手机号码' placeholder-class='pt-place'></input>
+    </view>
+    <view class='ipt-box disflex'>
+      <view class='icon-box'>
+        <text class='iconfont icon-42'></text>
+      </view>
+      <input type='number' bindblur='iptBlur' bindinput='iptInput' data-type="verify" maxlength='6' class='ipt verify flexn' value="{{verify}}" placeholder='输入短信验证码' placeholder-class='pt-place'></input>
+      <view class='verify-txt {{verifyStatus?"on":""}}' bindtap='{{verifyStatus?"getVerify":""}}'>
+        {{verifyTxt}}
+      </view>
+    </view>
+    <view class='login-btn {{loading?"on":""}}' bindtap='login'>登录</view>
+    <view class='tips'></view>
+  </view>
+</view>

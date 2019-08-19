@@ -1,0 +1,13 @@
+/* pages/login/login.wxss */
+.cont{width:100%;padding:0 72rpx;box-sizing:border-box}
+.ipt-box{width:100%;height:80rpx;line-height:80rpx;border-radius:40rpx;box-shadow:0 4rpx 30rpx 0 #daebe4;margin-bottom:70rpx;align-items: center}
+.ipt-box:nth-child(2){margin-bottom: 120rpx}
+.pt-place{color:#999}
+.ipt{font-size:30rpx;height:100%;padding-right:20rpx;box-sizing:border-box;color:#333}
+.icon-box{height:30rpx;width:80rpx;padding-left:10rpx;box-sizing: border-box;line-height:25rpx;text-align: center;border-right:1px solid #e2e2e2;margin-right:30rpx}
+.icon-box .iconfont{font-size:35rpx;color:#333}
+.verify-txt{height:30rpx;width:200rpx;line-height:30rpx;text-align:center;font-size:26rpx;color:#999;border-left:1px solid #e2e2e2}
+.verify-txt.on{color:#30c080}
+.login-btn{width:100%;height:80rpx;background:#30c080;border-radius:40rpx;line-height:80rpx;text-align:center;font-size:32rpx;color:#fff;font-weight:900;letter-spacing: 4rpx;margin-bottom:50rpx}
+.login-btn.on{background:#ccc}
+.tips{text-align:center;fpnt-size:22rpx;color:#999}
