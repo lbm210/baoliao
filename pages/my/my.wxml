@@ -1,5 +1,9 @@
 <!--pages/my/my.wxml-->
 <import src="/pages/templates/templates" />
+
+<!--自定义头部导航-->
+<component-topnav inner-title="{{navbarTit}}" isShowBack="{{navbarBack}}"></component-topnav>
+
 <view wx:if="{{isLoad}}">
   <template is="load" />
 </view>
@@ -148,5 +152,6 @@
   </view>
 </view>
 <view class="foot-hold"></view>
-<template is="hasUser" wx:if="{{showLogin}}" data="{{...hasUser,siteName}}"></template>
+<!-- <template is="hasUser" wx:if="{{showLogin}}" data="{{...hasUser,siteName}}"></template> -->
+<template is="hasUser" wx:if="{{showLogin}}" data="{{...hasUser,siteName,...userInfo,phoneBtnShow}}"></template>
 <template is="footer" data="{{navIndex,footer,is_login}}"></template>

@@ -6,6 +6,8 @@ const api = require('../../config/api.js')
 const common = require('../../public/common.js');
 Page({
   data: {
+    navbarTit: '',//头部导航标题
+    navbarBack: 'false',//头部导航图标：back是返回上一页，home是返回首页,false则无图标
     isEnd:false,
     isLoad: true,
     is_login: true,
@@ -65,7 +67,9 @@ Page({
     //没有爆料信息
     nodata:false,
     //点赞效果
-    animations:[]
+    animations:[],
+    //微信手机登录开关
+    phoneBtnShow:true
   },
   onLoad: function (option) {
 
@@ -89,8 +93,12 @@ Page({
       siteName = wx.getStorageSync('siteName');
       areaName = wx.getStorageSync('areaName');
     }
-    wx.setNavigationBarTitle({
-      title: areaName + '新鲜事爆料'
+    // wx.setNavigationBarTitle({
+    //   title: areaName + '新鲜事爆料'
+    // })
+
+    this.setData({
+      navbarTit: areaName + '新鲜事爆料'//自定义导航标题
     })
 
     console.log(wx.getStorageSync('squareIsOpen'))
@@ -159,12 +167,23 @@ Page({
       })
     } else {
       console.log('授权成功')
+      common.getUserInfo(e,that);
       common.onLaunch(function () {
         that.setData({
           is_login: true
         })
       });
     }
+  },
+  FnPhoneBtnShow:function(){
+    this.setData({
+      phoneBtnShow:false
+    })
+  },
+  FnPhoneBtnHide:function(){
+    this.setData({
+      phoneBtnShow:true
+    })
   },
   //获取广场上部信息
   GetBaoLiaoSquareTopInfo: function () {
@@ -246,8 +265,12 @@ Page({
             })
           }
 
-          wx.setNavigationBarTitle({
-            title: res.ServerInfo.AreaName + '新鲜事'
+          // wx.setNavigationBarTitle({
+          //   title: res.ServerInfo.AreaName + '新鲜事'
+          // })
+
+          that.setData({
+            navbarTit: res.ServerInfo.AreaName + '新鲜事'//自定义导航标题
           })
 
           if (wx.getStorageSync('squareIsOpen') == 0 || wx.getStorageSync('auditOpen') == 1) {

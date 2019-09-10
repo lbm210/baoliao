@@ -9,6 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    navbarTit: '我的爆料',//头部导航标题
+    navbarBack: 'back',//头部导航图标：back是返回上一页，home是返回首页,false则无图标
     isLoad: true,
     holdBot: { //上拉加载样式
       show: true,

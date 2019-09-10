@@ -10,6 +10,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    navbarTit: '分享好友',//头部导航标题
+    navbarBack: 'back',//头部导航图标：back是返回上一页，home是返回首页,false则无图标
     isLoad: true,
     siteCity:'',
     siteName: '',
@@ -46,8 +48,10 @@ Page({
     });
 
     console.log(options)
+    var userInfoNick = options.name;
+    userInfoNick = this.getLength(userInfoNick)
     this.setData({
-      nickName: options.name,
+      nickName: userInfoNick,
       avatar: options.tx,
       siteCity: wx.getStorageSync('areaName'),
       siteName: wx.getStorageSync('siteName'),
@@ -141,31 +145,32 @@ Page({
       context.closePath(); //关闭当前路径
     }
     //昵称
-    var redLef;
+    var site = that.data.siteName
     if (nickName) {
       context.setTextAlign('left')
       context.setFontSize(that.toPx(30));
       context.setFillStyle('#000');
-      context.fillText(nickName, that.toPx(245), that.toPx(740));
+      context.fillText(nickName + ' 邀请你参加' + site + '爆料', that.toPx(245), that.toPx(740));
       //正在读这篇文章
-      redLef = nickName.length * 30 + 255
-      context.setTextAlign('left')
-      context.setFontSize(that.toPx(30));
-      context.setFillStyle('#666');
-      context.fillText('邀请你参加', that.toPx(redLef), that.toPx(740));
+      //var redLef;
+      // redLef = nickName.length * 30 + 255
+      // context.setTextAlign('left')
+      // context.setFontSize(that.toPx(30));
+      // context.setFillStyle('#666');
+      // context.fillText('邀请你参加', that.toPx(redLef), that.toPx(740));
     }
     //站点
-    var site = that.data.siteName
-    let siteLeft = redLef + 150
-    context.setTextAlign('left')
-    context.setFontSize(that.toPx(30));
-    context.setFillStyle('#666');
-    context.fillText(site, that.toPx(siteLeft), that.toPx(740));
-    let nameLeft = site.length * 30 + siteLeft
-    context.setTextAlign('left')
-    context.setFontSize(that.toPx(30));
-    context.setFillStyle('#666');
-    context.fillText('爆料', that.toPx(nameLeft), that.toPx(740));
+    // var site = that.data.siteName
+    // let siteLeft = redLef + 150
+    // context.setTextAlign('left')
+    // context.setFontSize(that.toPx(30));
+    // context.setFillStyle('#666');
+    // context.fillText(site, that.toPx(siteLeft), that.toPx(740));
+    // let nameLeft = site.length * 30 + siteLeft
+    // context.setTextAlign('left')
+    // context.setFontSize(that.toPx(30));
+    // context.setFillStyle('#666');
+    // context.fillText('爆料', that.toPx(nameLeft), that.toPx(740));
     //长按小程序码
     context.setTextAlign('left')
     context.setFontSize(that.toPx(24));
@@ -245,5 +250,25 @@ Page({
     }
     context.fillText(line, x, y);
   },
+  //字符长度设置，中文两个长度，英文一个长度
+  getLength: function (val) {
+    var str = new String(val); var bytesCount = 0;
+    var newstr = '';
+    for (var i = 0, n = str.length; i < n; i++) {
+      var c = str.charCodeAt(i);
+      if ((c >= 0x0001 && c <= 0x007e) || (0xff60 <= c && c <= 0xff9f)) {
+
+        bytesCount += 1;
+      } else {
+        bytesCount += 2;
+      }
+      //console.log(bytesCount)
+      if (bytesCount <= 8) {
+        //console.log(str.substring(i, i+1))
+        newstr += str.substring(i, i + 1);
+      }
+    }
+    return newstr;
+  }
 
 })

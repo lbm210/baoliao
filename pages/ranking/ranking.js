@@ -9,6 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    navbarTit: '榜单',//头部导航标题
+    navbarBack: 'false',//头部导航图标：back是返回上一页，home是返回首页,false则无图标
     isLoad: true,
     is_login: true,
     navIndex: 1,
@@ -73,8 +75,9 @@ Page({
     }
     this.setData({
       'footer[0].isOpen': squareIsOpen,
-      'footer[1].isOpen': rankIsOpen,
+      'footer[1].isOpen': rankIsOpen
     })
+
 
     var followIsOpen = wx.getStorageSync('followIsOpen');
     var moveIsOpen = wx.getStorageSync('moveIsOpen');

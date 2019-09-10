@@ -8,6 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    navbarTit: '登录',//头部导航标题
+    navbarBack: 'back',//头部导航图标：back是返回上一页，home是返回首页,false则无图标
     isLoad: true,
     phone: '',
     verify: "",
@@ -155,34 +157,6 @@ Page({
         }
       }
     })
-
-    // let methodName = 'SmsSendAPI_SendSmsCode';
-    // var params = util.requestParamSms(methodName, {
-    //   phone: this.data.phone,
-    //   otype: otype,
-    //   userName: app.globalData.loginInfo.userName,
-    //   fromType: 1,
-    //   api: 2,
-    //   tag: tag,
-    //   siteID: app.globalData.loginInfo.siteId,
-    //   userID: app.globalData.loginInfo.userId
-    // });
-    // util.request({
-    //   url: 'http://smssendapi.bccoo.cn/appserverapi.ashx',
-    //   method: 'POST',
-    //   type: 'application/x-www-form-urlencoded',
-    //   data: {
-    //     param: params
-    //   },
-    //   success: function(res) {
-    //     //成功
-    //     console.log(res.Extend.AuthKey)
-    //     that.setData({
-    //       verify: res.Extend.AuthKey,
-    //       isUp: false
-    //     })
-    //   }
-    // })
   },
   //倒计时
   timeOut: function() {
@@ -318,7 +292,11 @@ Page({
       authKey: verify,
       post: '8000',
       version: '爆料-小程序',
-      siteID: app.globalData.loginInfo.siteId
+      siteID: app.globalData.loginInfo.siteId,
+      type: 1,
+      nick: app.globalData.loginInfo.nick,
+      userFace: app.globalData.loginInfo.userFace,
+      sex: app.globalData.loginInfo.sex
     });
     util.request({
       url: '',

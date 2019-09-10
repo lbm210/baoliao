@@ -1,5 +1,9 @@
 <!--pages/rank/rank.wxml-->
 <import src="/pages/templates/templates" />
+
+<!--自定义头部导航-->
+<component-topnav inner-title="{{navbarTit}}" isShowBack="{{navbarBack}}"></component-topnav>
+
 <view wx:if="{{isLoad}}">
   <template is="load" />
 </view>

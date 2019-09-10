@@ -9,6 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    navbarTit: '选择爆料类别',//头部导航标题
+    navbarBack: 'false',//头部导航图标：back是返回上一页，home是返回首页,false则无图标
     isEnd:false,
     isLoad: true,
     is_login: true,
@@ -41,7 +43,8 @@ Page({
         txt: '我的',
         icon: 'xicon-wode'
       }
-    ]
+    ],
+    pubRewShow: false, //发布奖励弹窗
   },
 
   /**
@@ -53,13 +56,32 @@ Page({
     let squareIsOpen = wx.getStorageSync('squareIsOpen');
     let rankIsOpen = wx.getStorageSync('rankIsOpen');
     let auditOpen = wx.getStorageSync('auditOpen');
+    let nowday = new Date().getFullYear().toString() + (new Date().getMonth() + 1).toString() + new Date().getDate().toString() ;
+    console.log(nowday)
+    //获取上次打开页面时间
+    let lastDay = wx.getStorageSync('day');
+    if(lastDay) {
+        console.log('lastday', lastDay);
+        console.log('nowday', nowday)
+        if(lastDay == nowday) {
+            this.setData({
+              pubRewShow: true
+            })
+        } else {
+            this.setData({
+              pubRewShow: false
+            })
+        }  
+    }
+
     if (auditOpen == 1) {
       squareIsOpen = 0;
       rankIsOpen = 0;
     }
+
     this.setData({
       'footer[0].isOpen': squareIsOpen,
-      'footer[1].isOpen': rankIsOpen,
+      'footer[1].isOpen': rankIsOpen
     })
 
     if (app.globalData.loginInfo.userId == 0) {
@@ -94,6 +116,7 @@ Page({
       })
     } else {
       console.log('授权成功')
+      common.getUserInfo(e);
       common.onLaunch(function () {
         that.setData({
           is_login: true
@@ -132,6 +155,13 @@ Page({
     wx.setStorageSync('labelId', e.currentTarget.dataset.id) 
     wx.navigateTo({
       url: `../fabu_info/fabu_info`,
+    })
+  },
+  closePubRew: function() {
+    let nowday = new Date().getFullYear().toString() + (new Date().getMonth() + 1).toString() + new Date().getDate().toString() ;
+    wx.setStorageSync('day', nowday);
+    this.setData({
+      pubRewShow: true
     })
   }
 })

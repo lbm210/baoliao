@@ -9,6 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    navbarTit: '爆料发布',//头部导航标题
+    navbarBack: 'back',//头部导航图标：back是返回上一页，home是返回首页,false则无图标
     isLoad: true,
     is_login: true,
     navIndex: 2,
@@ -70,7 +72,10 @@ Page({
     treatyList: [],
     userInfo: {},
     ERR_OK: false,
-    isUp: false
+    isUp: false,
+    playSrc:'',
+    //微信手机登录开关
+    phoneBtnShow: true
   },
 
   /**
@@ -139,6 +144,40 @@ Page({
   getphonenumber: function(e) {
     console.log(e)
     common.getPhoneNumber(e, this, );
+  },
+  getUserInfo: function (e) {
+    let that = this
+    console.log(!e.detail.userInfo)
+    if (!e.detail.userInfo) {
+      console.log('授权失败')
+      wx.showModal({
+        title: '授权失败',
+        content: '请允许小程序获取用户权限',
+        success: function (res) {
+          if (res.confirm) {
+            wx.openSetting({});
+          }
+        }
+      })
+    } else {
+      console.log('授权成功')
+      common.getUserInfo(e, that);
+      common.onLaunch(function () {
+        that.setData({
+          is_login: true
+        })
+      });
+    }
+  },
+  FnPhoneBtnShow: function () {
+    this.setData({
+      phoneBtnShow: false
+    })
+  },
+  FnPhoneBtnHide: function () {
+    this.setData({
+      phoneBtnShow: true
+    })
   },
   //获取爆料协议
   GetBaoLiaoTreatyList: function() {
@@ -450,7 +489,8 @@ Page({
     return mediaArr.join('|')
   },
   // 发布
-  fabu: function() {
+  fabu: function(e) {
+    console.log(e.detail)
     this.isOK(this.data, this)
     if (!this.data.ERR_OK || this.data.isUp) return
     this.setData({
@@ -466,11 +506,7 @@ Page({
     if (!shareUserID) {
       shareUserID = 0;
     }
-    // console.log(shareUserID+"||"+that.data.fabuData.label + '||' + that.data.fabuData.labelId);
-    // console.log(that.data.fabuData.tit + "||" + that.data.fabuData.txt);
-    // console.log(that.data.fabuData.address);
-    // console.log('pics-'+pics);
-    // console.log(that.data.fabuData.date + '||' + that.data.fabuData.phone);
+   
 
     var params = util.requestParam(methodName, {
       siteID: app.globalData.loginInfo.siteId, 
@@ -484,6 +520,7 @@ Page({
       cateId: that.data.fabuData.labelId,
       shareUserID: shareUserID,
       tel: that.data.fabuData.phone,
+      formId: e.detail.formId
     });
     util.request({
       url: api.ApiRootUrl,
@@ -692,7 +729,7 @@ Page({
     })
   },
   // 播放视频
-  playVideo:function(e){
+  /*playVideo:function(e){
     let index = e.currentTarget.dataset.index
     let videoCont = wx.createVideoContext(`video${index}`, this)
     let videoList = this.data.videoUrlList
@@ -701,11 +738,41 @@ Page({
       videoUrlList: videoList
     })
     videoCont.play()
-  },
+  },*/
   // 关闭登录弹窗
   closeLogin: function () {
     wx.navigateBack({
       delta:1
+    })
+  },
+  /**播放视屏 */
+  play(e) {
+    //console.log(e.target.dataset.src)
+    //执行全屏方法  
+    var videoContext = wx.createVideoContext('myvideo', this);
+    videoContext.requestFullScreen();
+    this.setData({
+      playSrc: e.target.dataset.src,
+      fullScreen: true,
+      tatShow: true
+    })
+  },
+  /**关闭视屏 */
+  closeVideo() {
+    //执行退出全屏方法
+    var videoContext = wx.createVideoContext('myvideo', this);
+    videoContext.exitFullScreen();
+    this.setData({
+      tatShow: false
+    })
+  },
+  /**视屏进入、退出全屏 */
+  fullScreen(e) {
+    var isFull = e.detail.fullScreen;
+    //视屏全屏时显示加载video，非全屏时，不显示加载video
+    this.setData({
+      fullScreen: isFull,
+      tatShow: !this.data.tatShow
     })
   }
 })

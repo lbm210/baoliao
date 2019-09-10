@@ -1,4 +1,8 @@
 <import src="/pages/templates/templates.wxml"/>
+
+<!--自定义头部导航-->
+<component-topnav inner-title="{{navbarTit}}" isShowBack="{{navbarBack}}"></component-topnav>
+
 <view wx:if="{{isLoad}}">
   <template is="load" />
 </view>
@@ -23,6 +27,15 @@
     <icon class="xicon-youshanjiao"></icon>
   </view>
 </block>
+</view>
+<!-- 发布奖励弹窗 -->
+<view class='dialog disflex' hidden="{{pubRewShow}}">
+  <view class='pubrew-dia'>    
+    <view class='pubrew-btn' bindtap='closePubRew'>
+    </view>
+    <view class='close-pubrew' bindtap='closePubRew'>
+    </view>
+  </view>
 </view>
 <view class="foot-hold"></view>
 <view hidden="{{!isEnd}}" class='dialog2'>

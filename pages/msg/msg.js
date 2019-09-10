@@ -9,6 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    navbarTit: '消息通知',//头部导航标题
+    navbarBack: 'back',//头部导航图标：back是返回上一页，home是返回首页,false则无图标
     isLoad: false,
     holdBot: { //上拉加载样式
       show: false,
@@ -95,11 +97,22 @@ Page({
               })
             }
           } else {
-            that.setData({
-              'holdBot.loading': false,
-              'holdBot.text': ' 没有更多内容了~',
-              'page.loadStatus': true
-            })
+            
+
+
+            if (index > 2) {
+              that.setData({
+                'holdBot.loading': false,
+                'holdBot.text': ' 没有更多内容了~',
+                'page.loadStatus': true
+              })
+            } else {
+              //第一页的时候，无数据 显示为发布按钮
+              that.setData({
+                'holdBot.show': false,
+                'page.loadStatus': true
+              })
+            }
           }
         } else {
           that.setData({

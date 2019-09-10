@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/navbar/navbar",
     "pages/my/my",
     "pages/baoliaoList/baoliaoList",
     "pages/fabu_info/fabu_info",
@@ -16,7 +17,8 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#30c080",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "navigationStyle":"custom"
   },
   "sitemapLocation": "sitemap.json",
   "permission": {

@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "详情",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "component-topnav": "/pages/navbar/navbar"
+  }
 }

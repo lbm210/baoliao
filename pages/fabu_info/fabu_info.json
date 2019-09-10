@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "爆料发布",
-  "enablePullDownRefresh": false
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "component-topnav": "/pages/navbar/navbar"
+  }
 }

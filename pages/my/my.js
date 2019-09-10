@@ -8,6 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    navbarTit: '我的',//头部导航标题
+    navbarBack: 'false',//头部导航图标：back是返回上一页，home是返回首页,false则无图标
     isLoad: true,
     is_login: true,
     navIndex: 3,
@@ -63,7 +65,10 @@ Page({
       noReadNum: 0,
       appId:'',
     },
-    isBack: false
+    isBack: false,
+    //微信手机登录开关
+    phoneBtnShow: true,
+    userInfo:{}
   },
 
   /**
@@ -93,9 +98,6 @@ Page({
     }
 
     let that = this
-    //util.isLogin(that, app)
-    console.log('userid- ' + app.globalData.loginInfo.userId)
-    console.log('phone- ' + app.globalData.loginInfo.phone)
     //是否登录
     if (app.globalData.loginInfo.userId > 0 && app.globalData.loginInfo.phone.length > 0) {
       this.setData({
@@ -173,12 +175,23 @@ Page({
       })
     } else {
       console.log('授权成功')
+      common.getUserInfo(e, that);
       common.onLaunch(function() {
         that.setData({
           is_login: true
         })
       });
     }
+  },
+  FnPhoneBtnShow: function () {
+    this.setData({
+      phoneBtnShow: false
+    })
+  },
+  FnPhoneBtnHide: function () {
+    this.setData({
+      phoneBtnShow: true
+    })
   },
   // 钱包提示
   tipsShow: function() {

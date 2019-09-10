@@ -10,6 +10,8 @@ const WxParse = require('../../wxParse/wxParse.js')
 
 Page({
   data: {
+    navbarTit: '详情',//头部导航标题
+    navbarBack: 'back',//头部导航图标：back是返回上一页，home是返回首页,false则无图标
     is_login:false,
     isLoad: true,
     shieldIsOpen: 0, //是否开启屏蔽 0：否 1：是
@@ -58,17 +60,30 @@ Page({
     logo: '',// 站点logo
     siteName: '',
     popTitle: '',
+    popSite: '',
     ewx: '',
     avatar: '',
     nickName: '',
-    popSite: '',
     sharePic: '',
     shareRead: true,
-    backIndex:true
+    backIndex:true,
+    //微信手机登录开关
+    phoneBtnShow: true
   },
   onLoad: function (option) {
     
     var that = this;
+    //如果是分享页切换头部导航
+    try{
+      if (option.isshare){
+        this.setData({
+          navbarBack: "home"
+        })
+      }
+    } catch (err){
+      console.log(err)
+    }
+    
     this.setData({
       detailId: wx.getStorageSync('detaileId'),
       // detailId: 10976991,
@@ -178,7 +193,7 @@ Page({
     //发送给好友
     return {
       title: this.data.detaileData.title,
-      path: `${url}?id=${this.data.detailId}&share==1`,
+      path: `${url}?id=${this.data.detailId}&share==1&isshare=true`,
       imageUrl: ''
     }
   },
@@ -217,6 +232,7 @@ Page({
             pinglun: res.ServerInfo.pinglun,
             itemsList: res.ServerInfo.itemsList,
             popTitle: res.ServerInfo.detaileData.title,
+            popSite: res.ServerInfo.xcxName,
             sharePic: (res.ServerInfo.detaileData.img && res.ServerInfo.detaileData.img.length > 0)? res.ServerInfo.detaileData.img : "http://img.pccoo.cn/xcx/images/poster-ban.jpg", 
             banner: "https://xcxapi.bccoo.cn/imgref/ajax/imgref.ashx?url=http://img.pccoo.cn/xcx/images/poster-ban.jpg"
           })
@@ -306,21 +322,30 @@ Page({
       })
     } else {
       console.log('授权成功')
-      console
+      that.setData({
+        userInfo: e.detail.userInfo,
+      })
       if(!e.currentTarget.dataset.type){
-        that.setData({
-          userInfo: e.detail.userInfo,
-        })
         that.shareFn()
       }else{
         common.onLaunch(function () {
           that.setData({
             is_login: true,
-            userInfo: e.detail.userInfo,
+            phoneBtnShow: false
           })
         });
       }
     }
+  },
+  FnPhoneBtnShow: function () {
+    this.setData({
+      phoneBtnShow: false
+    })
+  },
+  FnPhoneBtnHide: function () {
+    this.setData({
+      phoneBtnShow: true
+    })
   },
 
   more: function (e) {
@@ -376,9 +401,11 @@ Page({
 
     //如果有用户信息调用户信息
     if (this.data.userInfo != undefined) {
+      var userInfoNick = this.data.userInfo.nickName;
+      userInfoNick = this.getLength(userInfoNick)
       this.setData({
         avatar: this.data.userInfo.avatarUrl,
-        nickName: this.data.userInfo.nickName
+        nickName: userInfoNick
       })
     }
     //如果没有用户信息调调默认头像
@@ -471,13 +498,13 @@ Page({
       context.setTextAlign('left')
       context.setFontSize(that.toPx(30));
       context.setFillStyle('#000');
-      context.fillText(nickName, that.toPx(245), that.toPx(640));
+      context.fillText(nickName + ' 正在读这篇文章', that.toPx(245), that.toPx(640));
       //正在读这篇文章
-      redLef = nickName.length * 30 + 255
-      context.setTextAlign('left')
-      context.setFontSize(that.toPx(30));
-      context.setFillStyle('#666');
-      context.fillText('正在读这篇文章', that.toPx(redLef), that.toPx(640));
+      // redLef = nickName.length * 30 + 255
+      // context.setTextAlign('left')
+      // context.setFontSize(that.toPx(30));
+      // context.setFillStyle('#666');
+      // context.fillText('正在读这篇文章', that.toPx(redLef), that.toPx(640));
     }
     //长按小程序码
     context.setTextAlign('left')
@@ -586,7 +613,8 @@ Page({
       let zanNum = that.data.detaileData.zanNum
       let zanTx = that.data.detaileData.zanTx
       zanNum++
-      zanTx.push({ 'roleImg': tx })
+      zanTx.unshift({ 'roleImg': tx })
+      console.log(tx)
       that.setData({
         'detaileData.isZan': true,
         'detaileData.animate': true,
@@ -615,6 +643,26 @@ Page({
     this.setData({
       showLogin: false
     })
+  },
+  //字符长度设置，中文两个长度，英文一个长度
+  getLength: function(val) {
+    var str = new String(val); var bytesCount = 0;
+    var newstr='';
+    for (var i = 0, n = str.length; i < n; i++) {
+      var c = str.charCodeAt(i);
+      if ((c >= 0x0001 && c <= 0x007e) || (0xff60 <= c && c <= 0xff9f)) {
+        
+        bytesCount += 1;
+      } else {
+        bytesCount += 2;
+      }
+      if (bytesCount <= 16) {
+        //console.log(str.substring(i, i+1))
+        newstr += str.substring(i, i+1);
+      }
+    }
+    return newstr;
   }
+
   
 })

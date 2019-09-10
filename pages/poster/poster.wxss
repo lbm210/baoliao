@@ -10,8 +10,8 @@
 .poster{padding:70rpx 0 40rpx;}
 .save-btn{width:300rpx;height:80rpx;line-height:80rpx;background:#30c080;color:#fff;border-radius:30px;font-size:32rpx;}
 .poster-tip{font-size:26rpx;color:#666;text-align:center;margin-bottom:40rpx;}
-.poster-box{width:540rpx;height:600rpx;margin:0 auto 40rpx;background:#fff;box-shadow:0 5rpx 12rpx 0 rgba(51,51,51,.2)}
-.poster-box .ban-box{width:100%;height:275rpx;position:relative;}
+.poster-box{width:580rpx;height:644rpx;margin:0 auto 40rpx;background:#fff;box-shadow:0 5rpx 12rpx 0 rgba(51,51,51,.2)}
+.poster-box .ban-box{width:100%;height:319rpx;position:relative;}
 .poster-box .ban-box .banner{width:100%;height:100%;}
 .poster-box .logo-box{position:absolute;left:18rpx;top:18rpx;height:30rpx;line-height:30rpx;font-size:22rpx;color:#fff;overflow:hidden;}
 .poster-box .logo{width:30rpx;height:30rpx;float:left;margin-right:16rpx;}

@@ -99,14 +99,14 @@ button::after{display:none}
 .share-box .v-style:after{border:none;}
 .poster{padding:80rpx 0 40rpx;}
 .save-btn{width:300rpx;height:80rpx;line-height:80rpx;background:#ee2e2e;color:#fff;border-radius:30px;font-size:32rpx;}
-.poster-tip{font-size:26rpx;color:#666;text-align:center;margin-bottom:40rpx;}
-.poster-box{width:440rpx;height:470rpx;margin:0 auto 40rpx;background:#fff;box-shadow:0 5rpx 12rpx 0 rgba(51,51,51,.2)}
-.poster-box .ban-box{width:100%;height:220rpx;position:relative;}
+.poster-tip{font-size:26rpx;color:#666;text-align:center;margin-bottom:30rpx;}
+.poster-box{width:480rpx;height:503rpx;margin:0 auto 30rpx;background:#fff;box-shadow:0 5rpx 12rpx 0 rgba(51,51,51,.2)}
+.poster-box .ban-box{width:100%;height:253rpx;position:relative;}
 .poster-box .ban-box .banner{width:100%;height:100%;}
 .poster-box .logo-box{position:absolute;left:18rpx;top:18rpx;height:30rpx;line-height:30rpx;font-size:20rpx;color:#fff;overflow:hidden;}
 .poster-box .logo{width:30rpx;height:30rpx;float:left;margin-right:16rpx;}
 .poster-box .logo-box view{float:left;}
-.poster-box .bot-box{padding:0 17rpx;}
+.poster-box .bot-box{padding:0 16rpx;}
 .poster-box .bot-box .tit{margin:22rpx 0 30rpx;font-size:26rpx;color:#333;line-height:40rpx;display:-webkit-box;overflow:hidden;white-space:normal;text-overflow:ellipsis;-webkit-box-orient:vertical;-webkit-line-clamp:2;}
 .poster-box .bot-box .ewx{width:80rpx;height:80rpx;margin-right:10rpx;}
 .poster-box .bot-box .p1{color:#666;font-size:20rpx;overflow:hidden;}

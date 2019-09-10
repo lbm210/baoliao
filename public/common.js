@@ -70,9 +70,10 @@ const saveLoginUserInfo = function (userId, userName, userFace, nick, phone) {
 //获取用户信息
 const getLoginUserInfo = function () {
   app.globalData.loginInfo.phone = wx.getStorageSync('phone');
-  app.globalData.loginInfo.userFace = wx.getStorageSync('userFace');
-  app.globalData.loginInfo.nick = wx.getStorageSync('nick');
-  console.log('userId-'+wx.getStorageSync('userId'))
+  if (wx.getStorageSync('userFace')){
+    app.globalData.loginInfo.userFace = wx.getStorageSync('userFace');
+    app.globalData.loginInfo.nick = wx.getStorageSync('nick');
+  }
   let userId = wx.getStorageSync('userId');
   if (userId==''){
     app.globalData.loginInfo.userId = 0;
@@ -84,8 +85,8 @@ const getLoginUserInfo = function () {
 }
 
 //手动授权获取用户信息
-const getUserInfo = function (e) {
-  let that = this;
+const getUserInfo = function (e,me) {
+  let that = me;
   var sex = '';
   if (e.detail.userInfo.gender == 1) {
     sex = '男';
@@ -98,6 +99,11 @@ const getUserInfo = function (e) {
   app.globalData.loginInfo.nick = e.detail.userInfo.nickName;
   app.globalData.loginInfo.sex = sex;
   app.globalData.loginInfo.lifeaddr = e.detail.userInfo.province + e.detail.userInfo.city;
+  that.setData({
+    'userInfo.avatarUrl':e.detail.userInfo.avatarUrl,
+    'userInfo.nickName': e.detail.userInfo.nickName,
+    phoneBtnShow: false
+  })
 }
 //登录
 const onLaunch = function (succFunc,failFunc) {
@@ -257,13 +263,20 @@ const setRegUserInfo = function (mod) {
   var key = 'ccoo_xcx_baoliao_2019';
   var sign = utilTwo.hexMD5(key + method + time);  //密码
 
+  // console.log('nick: ' + app.globalData.loginInfo.nick)
+  // console.log('userFace: ' + app.globalData.loginInfo.userFace)
+  // console.log('sex: '+app.globalData.loginInfo.sex)
+  // return ;
   var params = util.requestParam(method, { 
     authKey: sign, 
     time: time, 
     phone: app.globalData.loginInfo.phone, 
     post: 8000, 
     version: '爆料-小程序', 
-    siteID: app.globalData.loginInfo.siteId 
+    siteID: app.globalData.loginInfo.siteId,
+    nick: app.globalData.loginInfo.nick,
+    userFace: app.globalData.loginInfo.userFace,
+    sex: app.globalData.loginInfo.sex
     }, 0);
   util.request({
     url: util.API_net,

@@ -3,8 +3,9 @@
 <template name="hasUser">
   <view class="userinfo">
     <view class="getinfo-box">
-      <image class='user-tx' mode='aspectFit' src="{{userTx}}"></image>
-      <button class='user-btn' open-type="getPhoneNumber" bindgetphonenumber="getphonenumber"> 微信授权登录 </button>
+      <image class='user-tx' mode='aspectFit' src="{{avatarUrl?avatarUrl:userTx}}"></image>
+      <button wx:if="{{!nick}}" open-type='getUserInfo' data-type="getUserInfo" bindgetuserinfo="getUserInfo" class='user-btn'>微信授权登录</button>
+      <view wx:if="{{nick}}" bindtap="FnPhoneBtnShow" class='user-btn'>微信授权登录</view>
       <navigator open-type='navigate' url="{{loginUrl}}" class='user-btn'> 手机号注册/登录 </navigator>
       <view class="back-page" bindtap="closeLogin">取消</view>
     </view>
@@ -12,19 +13,30 @@
     <view class='fuwu'>
       <text>©</text> {{siteName}}提供安全登录服务支持
     </view>
+    <view class="login-phone disflex" hidden="{{phoneBtnShow}}">
+      <view class="login-phone-content">
+        <text class="iconfont icon-cuohao" bindtap="FnPhoneBtnHide"></text>
+        <view class="lg-pho-tit">
+          <view class="lg-user">{{nickName}}</view>
+          <view class="huany">你好，欢迎加入爆料</view>
+          <view class="lg-tips">根据国家法律法规要求，应用需手机认证才能访问</view>
+        </view>
+        <button class='user-btn' open-type="getPhoneNumber" bindgetphonenumber="getphonenumber"> 微信授权登录 </button>
+        <view class="site-tip">（{{siteName}}提供安全认证服务）</view>
+      </view>
+    </view>
   </view>
 </template>
 <!-- 底部导航 -->
 <template name="footer">
   <view class="foot-bx">
-    <button wx:if="{{!is_login}}" open-type='getUserInfo' bindgetuserinfo="getUserInfo"  class='get-user'></button>
     <view class='disflex'>
       <block wx:for="{{footer}}" wx:key="item" wx:for-index="index">
-      <navigator wx:if="{{item.isOpen == 1}}" class="flexn {{navIndex==index?'active':''}}" hover-class="none" open-type="redirect" url="{{item.url}}">
-        <icon class="{{item.icon}}"></icon>
-        <label>{{item.txt}}</label>
-      </navigator>
-    </block>
+        <navigator wx:if="{{item.isOpen == 1}}" class="flexn {{navIndex==index?'active':''}}" hover-class="none" open-type="redirect" url="{{item.url}}">
+          <icon class="{{item.icon}}"></icon>
+          <label>{{item.txt}}</label>
+        </navigator>
+      </block>
     </view>
   </view>
 </template>

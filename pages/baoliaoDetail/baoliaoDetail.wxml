@@ -1,6 +1,9 @@
 <import src="../templates/templates" />
 <import src="../../wxParse/wxParse" />
 
+<!--自定义头部导航-->
+<component-topnav inner-title="{{navbarTit}}" isShowBack="{{navbarBack}}"></component-topnav>
+
 <view wx:if="{{isLoad}}">
   <template is="load" />
 </view>
@@ -30,7 +33,7 @@
     </view>
     <view wx:if="{{review}}">
       <view class="zan-box">
-        <button wx:if="{{!is_login}}" data-type="getUserInfo" open-type='getUserInfo' bindgetuserinfo="getUserInfo" class='user-up-btn'></button>
+        <!-- <button wx:if="{{!is_login}}" data-type="getUserInfo" open-type='getUserInfo' bindgetuserinfo="getUserInfo" class='user-up-btn'></button> -->
         <view class='zan' bindtap='thumbsUp' data-id="{{detailId}}">
           <text class='iconfont {{detaileData.isZan?"icon-dianzan2":"icon-dianzan"}} {{detaileData.animate?"animate":""}}'></text> {{detaileData.isZan?"已赞":"点赞"}}</view>
       </view>
@@ -192,4 +195,5 @@
   <image class='shouye' mode="aspectFill" src="../../images/shouye.png"></image>
   <text>首页</text>
 </navigator>
-<template is="hasUser" wx:if="{{showLogin}}" data="{{...hasUser,siteName}}"></template>
+<!-- <template is="hasUser" wx:if="{{showLogin}}" data="{{...hasUser,siteName}}"></template> -->
+<template is="hasUser" wx:if="{{showLogin}}" data="{{...hasUser,siteName,...userInfo,phoneBtnShow}}"></template>

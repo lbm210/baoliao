@@ -10,3 +10,6 @@
 .fabu-tit{color:#333;font-size:30rpx;font-weight:bold}
 .fabu-info{color:#999;font-size:24rpx;margin-top:8rpx}
 .item-cont{overflow: hidden}
+.pubrew-dia{width:600rpx;height:820rpx;background:url('http://img.pccoo.cn/headline-xcx/images/go-public.png');background-size:cover;position:relative;}
+.pubrew-dia .close-pubrew{width:60rpx;height:60rpx;position: absolute;left:270rpx;bottom:0;}
+.pubrew-dia .pubrew-btn{width:240rpx;height:80rpx;position: absolute;left:180rpx;bottom:140rpx;}

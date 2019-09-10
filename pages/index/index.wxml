@@ -1,6 +1,10 @@
  <!--index.wxml-->
 <import src="../templates/templates.wxml" />
-<template is="hasUser" wx:if="{{isLogin}}" data="{{...hasUser,siteName}}"></template>
+<!-- <template is="hasUser" wx:if="{{isLogin}}" data="{{...hasUser,siteName}}"></template> -->
+<template is="hasUser" wx:if="{{isLogin}}" data="{{...hasUser,siteName,...userInfo,phoneBtnShow}}"></template>
+
+<!--自定义头部导航-->
+<component-topnav inner-title="{{navbarTit}}" isShowBack="{{navbarBack}}"></component-topnav>
 
 <view wx:if="{{isLoad}}">
   <template is="load" />
@@ -60,7 +64,7 @@
           <view class='user-txt'>{{item.txt}}</view>
           <view class='media' wx:if="{{ item.video || item.imgnum > 0 }}">
             <view class='media-box disflex'>
-              <view class="video-box" wx:if="{{item.video}}" wx:for="{{item.video}}" wx:for-item="videoItem" wx:key="videoItem">
+              <view class="video-box" wx:for="{{item.video}}" wx:for-item="videoItem" wx:for-index="videoIndex" wx:key="videoItem" wx:if="{{videoIndex<3}}">
                 <image class='video'  mode='aspectFill' src='{{videoItem.videoPic}}'></image>
                 <view class='mask'></view>
               </view>
